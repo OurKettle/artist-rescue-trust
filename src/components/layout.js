@@ -10,10 +10,6 @@ import { MobileNav, NavLeft, NavRight, FooterNav } from "./nav"
 import { Wrapper, Header, Footer } from "../styles/Layout"
   
 const Layout = ({ location, children }) => {
- Layout.defaultProps = {
-   location: {},
- }
-
   return (
     <StaticQuery
       query={pageQuery}
@@ -47,6 +43,11 @@ const Layout = ({ location, children }) => {
     />
   )
 }
+
+Layout.defaultProps = {
+  location: {},
+}
+
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

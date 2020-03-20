@@ -3,8 +3,6 @@ import PropTypes from "prop-types"
 import { Link, StaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
-import "./layout.css"
-
 // Components
 import { MobileNav, NavLeft, NavRight, FooterNav } from "./nav"
 
@@ -12,6 +10,10 @@ import { MobileNav, NavLeft, NavRight, FooterNav } from "./nav"
 import { Wrapper, Header, Footer } from "../styles/Layout"
   
 const Layout = ({ location, children }) => {
+ Layout.defaultProps = {
+   location: {},
+ }
+
   return (
     <StaticQuery
       query={pageQuery}

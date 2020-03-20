@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Together UBI`,
     description: `Crisis brings out our human nature. Generosity, compassion and care. Donate to help people in need during COVID19, or sign up for financial assistance due to COVID19.`,
-    // author: `@gatsbyjs`,
+    siteUrl: `https://together-ubi.netlify.com//`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

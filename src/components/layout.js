@@ -14,7 +14,7 @@ import { Wrapper, Header, Footer } from "../styles/Layout"
 const Layout = ({ location, children }) => {
 
   const pathName = () => {
-    return location.pathname
+    return test
   }
   return (
     <Wrapper>

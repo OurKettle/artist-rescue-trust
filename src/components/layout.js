@@ -1,46 +1,42 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
+import { HelmetDatoCms } from "gatsby-source-datocms"
 
-import Header from "./header"
 import "./layout.css"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+// Components
+import { MobileNav, NavLeft, NavRight, FooterNav } from "./nav"
 
+// Styles
+import { Wrapper, Header, Footer } from "../styles/Layout"
+
+const Layout = ({ location, children }) => {
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+    <Wrapper>
+      <HelmetDatoCms>
+        <script
+          src="https://kit.fontawesome.com/856c74694a.js"
+          crossorigin="anonymous"
+        ></script>
+      </HelmetDatoCms>
+      <MobileNav location={location.pathname} />
+      <div className="app">
+        <Header>
+          <NavLeft location={location.pathname} />
+          <h3 className="title">
+            <Link to={`/`}>
+              Together UBI
+            </Link>
+          </h3>
+          <NavRight location={location.pathname} />
+        </Header>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
       </div>
-    </>
+      <Footer>
+        <FooterNav></FooterNav>
+      </Footer>
+    </Wrapper>
   )
 }
 

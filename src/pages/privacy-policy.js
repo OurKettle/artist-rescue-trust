@@ -9,8 +9,8 @@ const IndexPage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Home" />
-      <div>Home/About</div>
+      <SEO title="Privacy Policy" />
+      <div>Privacy Policy</div>
     </Layout>
   )
 }

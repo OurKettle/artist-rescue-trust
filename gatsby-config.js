@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Together UBI`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    description: `Crisis brings out our human nature. Generosity, compassion and care. Donate to help people in need during COVID19, or sign up for financial assistance due to COVID19.`,
     // author: `@gatsbyjs`,
   },
   plugins: [

@@ -12,10 +12,6 @@ import { MobileNav, NavLeft, NavRight, FooterNav } from "./nav"
 import { Wrapper, Header, Footer } from "../styles/Layout"
 
 const Layout = ({ location, children }) => {
-
-  const pathName = () => {
-    return test
-  }
   return (
     <Wrapper>
       <HelmetDatoCms>
@@ -24,14 +20,14 @@ const Layout = ({ location, children }) => {
           crossorigin="anonymous"
         ></script>
       </HelmetDatoCms>
-      <MobileNav location={pathName()} />
+      <MobileNav location={location.pathname} />
       <div className="app">
         <Header>
-          <NavLeft location={pathName()} />
+          <NavLeft location={location.pathname} />
           <h3 className="title">
             <Link to={`/`}>Together UBI</Link>
           </h3>
-          <NavRight location={pathName()} />
+          <NavRight location={location.pathname} />
         </Header>
         <main>{children}</main>
       </div>

@@ -8,17 +8,16 @@ import { Link } from "gatsby"
 import { slide as Menu } from "react-burger-menu"
 
 // Styles
-import { StyledNav, StyledMobileNav, StyledFooterNav } from "../styles/StyledNav"
+import {
+  StyledNav,
+  StyledMobileNav,
+  StyledFooterNav,
+} from "../styles/StyledNav"
 
 export const NavLeft = ({ location }) => {
   return (
     <StyledNav>
-      <Link
-        to="/"
-        id="about"
-        className="menu-item"
-        activeClassName="active"
-      >
+      <Link to="/" id="about" className="menu-item" activeClassName="active">
         About
       </Link>
       <Link
@@ -29,12 +28,7 @@ export const NavLeft = ({ location }) => {
       >
         How It Works
       </Link>
-      <Link
-        to="/team"
-        id="team"
-        className="menu-item"
-        activeClassName="active"
-      >
+      <Link to="/team" id="team" className="menu-item" activeClassName="active">
         Team
       </Link>
     </StyledNav>
@@ -64,7 +58,7 @@ export const NavRight = ({ location }) => {
   )
 }
 
-export const MobileNav = () => {
+export const MobileNav = ({ location }) => {
   var styles = {
     bmMenuWrap: {
       transitionDuration: ".3s",
@@ -97,10 +91,20 @@ export const MobileNav = () => {
 export const FooterNav = () => {
   return (
     <StyledFooterNav>
-      <Link to="/terms-of-service" id="tos" className="menu-item" activeClassName="active">
+      <Link
+        to="/terms-of-service"
+        id="tos"
+        className="menu-item"
+        activeClassName="active"
+      >
         Terms of Service
       </Link>
-      <Link to="/privacy-policy" id="privacy-policy" className="menu-item" activeClassName="active">
+      <Link
+        to="/privacy-policy"
+        id="privacy-policy"
+        className="menu-item"
+        activeClassName="active"
+      >
         Privacy Policy
       </Link>
       <Link

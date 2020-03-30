@@ -48,7 +48,6 @@ Layout.defaultProps = {
   location: {},
 }
 
-
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }

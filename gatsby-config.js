@@ -1,9 +1,26 @@
+const { createProxyMiddleware } = require("http-proxy-middleware")
+
 module.exports = {
+  // for avoiding CORS while developing Netlify Functions locally
+  // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
+  developMiddleware: app => {
+    app.use(
+      "/.netlify/functions/",
+      createProxyMiddleware({
+        target: "http://localhost:9000",
+        pathRewrite: {
+          "/.netlify/functions/": "",
+        },
+      })
+    )
+  },
+
   siteMetadata: {
     title: `Together UBI`,
     description: `Crisis brings out our human nature. Generosity, compassion and care. Donate to help people in need during COVID19, or sign up for financial assistance due to COVID19.`,
     siteUrl: `https://together-ubi.netlify.com//`,
   },
+
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-image`,

@@ -48,6 +48,6 @@ export const Header = styled.header`
 `
 
 export const Footer = styled.footer`
-
+  text-align: center;
 }
 `

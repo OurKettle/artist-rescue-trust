@@ -11,7 +11,7 @@ grandViewTheme.overrideThemeStyles = () => {
     body: {
       color: `${theme.black}`,
       // font: `100%/1.75 Merriweather, Georgia, serif!important`,
-      fontSize: `16px!important`,
+      // fontSize: `16px!important`,
       textAlign: `left`,
     },
     "h1, h2, h3, h4, h5": {

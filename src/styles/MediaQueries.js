@@ -4,6 +4,8 @@ const size = {
   mobileL: "600px",
   tablet: "768px",
   laptop: "992px",
+  desktop: "1370px",
+  desktopL: "1600px",
 }
 
 export const device = {
@@ -14,6 +16,8 @@ export const device = {
   tablet: `(min-width: ${size.tablet}) and (max-width: ${size.laptop})`,
   tabletUp: `(min-width: ${size.tablet})`,
   laptop: `(min-width: ${size.laptop})`,
+  desktop: `(min-width: ${size.desktop})`,
+  desktopL: `(min-width: ${size.desktopL})`,
 }
 
 // /* Smartphones (landscape) ----------- */

@@ -1,8 +1,86 @@
 import styled from "styled-components"
-import { theme } from "./Theme"
 import { device } from "./MediaQueries"
+import { theme } from "./Theme"
+import { blueGradient, pinkGradient } from "./Mixins"
+
+export const StyledNav = styled.nav`
+  display: none;
+  text-transform: uppercase;
+
+  @media ${device.laptop} {
+    font-size: 1rem;
+  }
+
+  @media ${device.desktop} {
+    font-size: 1.2rem;
+  }
+
+  @media ${device.laptop} {
+    display: block;
+  }
+
+  a {
+    position: relative;
+
+    &:hover,
+    &.active {
+      color: ${theme.darkPurple};
+    }
+
+    &.buttonBlue {
+      width: 154px;
+      padding: 10px 20px;
+      ${blueGradient};
+      margin-left: 15px;
+
+      @media ${device.desktop} {
+        margin-left: 30px;
+      }
+    }
+
+    &.buttonPurple {
+      width: 154px;
+      padding: 10px 20px;
+      ${pinkGradient};
+    }
+  }
+
+  .menu-item {
+    margin-right: 15px;
+    @media ${device.desktop} {
+      margin-right: 30px;
+    }
+  }
+`
 
 export const StyledMobileNav = styled.div`
+  text-transform: uppercase;
+
+  a {
+    position: relative;
+    color: ${theme.white};
+
+    &:hover,
+    &.active {
+      color: ${theme.darkPurple};
+    }
+
+    &.buttonBlue {
+      padding: 10px 20px;
+      text-align: center;
+      ${blueGradient};
+      color: ${theme.black};
+      margin-top: 30px;
+    }
+
+    &.buttonPurple {
+      padding: 10px 20px;
+      text-align: center;
+      ${pinkGradient};
+      color: ${theme.black};
+      margin-top: 30px;
+    }
+  }
 
   @media ${device.laptop} {
     display: none;
@@ -10,13 +88,16 @@ export const StyledMobileNav = styled.div`
 
   .bm-burger-button {
     position: absolute;
-    width: 29px;
+    width: 50px;
     height: 23px;
     right: 30px;
     top: 45px;
+    text-transform: uppercase;
 
-    button:focus {
-      outline: none;
+    button {
+      &:focus {
+        outline: none;
+      }
     }
   }
 
@@ -57,7 +138,7 @@ export const StyledMobileNav = styled.div`
   .bm-menu {
     background: ${theme.black};
     padding: 2.5em 1.5em 0;
-    font-size: 1.15em;
+    font-size: 1.2rem;
   }
 
   .bm-morph-shape {
@@ -69,54 +150,35 @@ export const StyledMobileNav = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     padding: 0.8em;
-
-    a {
-      color: ${theme.white};
-    }
   }
 
   .bm-item {
     display: inline-block;
     box-shadow: none;
-    font-family: Montserrat; sans-serif;
-    font-size: 18px;
+    /* font-family: Montserrat; sans-serif; */
+    font-size: 1.2rem;
   }
-  
+
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
 `
 
-export const StyledNav = styled.nav`
-  display: none;
-
-  @media ${device.laptop} {
-    display: block;
-  }
-
-  a {
-    position: relative;
-
-    &:hover {
-      color: #f16d2a;
-    }
-
-    &.active {
-      color: #f16d2a;
-    }
-  }
-
-  .menu-item {
-    margin-right: 10px;
-  }
-`
-
 export const StyledFooterNav = styled.nav`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 350px;
+  transition: all 0.3s ease-out;
+  font-size: 0.7rem;
 
   @media ${device.tabletUp} {
     flex-direction: row;
+    width: 700px;
+    font-size: 1.2rem;
+  }
+
+  a {
+    color: ${theme.white};
   }
 `

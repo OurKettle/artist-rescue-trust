@@ -4,11 +4,12 @@ import { Link, StaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 // Components
-import { MobileNav, NavLeft, NavRight, FooterNav } from "./nav"
+import { MobileNav, Nav, FooterNav } from "./nav"
+import logo from "../images/logo.png"
 
 // Styles
 import { Wrapper, Header, Footer } from "../styles/Layout"
-  
+
 const Layout = ({ location, children }) => {
   return (
     <StaticQuery
@@ -25,20 +26,25 @@ const Layout = ({ location, children }) => {
             <MobileNav location={location.pathname} />
             <div className="app">
               <Header>
-                <NavLeft location={location.pathname} />
-                <h3 className="title">
-                  <Link to={`/`}>Together UBI</Link>
-                </h3>
-                <NavRight location={location.pathname} />
+                <div className="header-left">
+                  <Link to={`/`}>
+                    <div className="logo"></div>
+                  </Link>
+                </div>
+                <div className="header-right">
+                  <Nav location={location.pathname} />
+                </div>
               </Header>
               <main>{children}</main>
             </div>
             <Footer>
+              <div className="logo">
+                <img src={logo} alt="" />
+              </div>
               <FooterNav></FooterNav>
-              <div>Powered By Good Conscience</div>
             </Footer>
           </Wrapper>
-        ) 
+        )
       }}
     />
   )

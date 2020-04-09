@@ -14,10 +14,18 @@ import {
   StyledFooterNav,
 } from "../styles/StyledNav"
 
-export const NavLeft = ({ location }) => {
+export const Nav = ({ location }) => {
   return (
     <StyledNav>
-      <Link to="/" id="about" className="menu-item" activeClassName="active">
+      <Link to="/" id="home" className="menu-item" activeClassName="active">
+        Home
+      </Link>
+      <Link
+        to="/about"
+        id="about"
+        className="menu-item"
+        activeClassName="active"
+      >
         About
       </Link>
       <Link
@@ -29,30 +37,23 @@ export const NavLeft = ({ location }) => {
         How It Works
       </Link>
       <Link to="/team" id="team" className="menu-item" activeClassName="active">
-        Team
-      </Link>
-    </StyledNav>
-  )
-}
-
-export const NavRight = ({ location }) => {
-  return (
-    <StyledNav>
-      <Link
-        to="/sign-up"
-        id="sign-up"
-        className="menu-item"
-        activeClassName="active"
-      >
-        Sign Up
+        Our Team
       </Link>
       <Link
         to="/donate"
         id="donate"
-        className="menu-item"
+        className="menu-item buttonBlue"
         activeClassName="active"
       >
-        Donate
+        Give Help
+      </Link>
+      <Link
+        to="/sign-up"
+        id="sign-up"
+        className="menu-item buttonPurple"
+        activeClassName="active"
+      >
+        Get Help
       </Link>
     </StyledNav>
   )
@@ -67,21 +68,56 @@ export const MobileNav = ({ location }) => {
 
   return (
     <StyledMobileNav>
-      <Menu styles={styles} width={"250px"} right noOverlay disableAutoFocus>
-        <Link id="About" to="/" className="menu-item">
+      <Menu
+        styles={styles}
+        width={"250px"}
+        customBurgerIcon={<h4>Menu</h4>}
+        right
+        noOverlay
+        disableAutoFocus
+      >
+        <Link to="/" id="home" className="menu-item" activeClassName="active">
+          Home
+        </Link>
+        <Link
+          to="/about"
+          id="about"
+          className="menu-item"
+          activeClassName="active"
+        >
           About
         </Link>
-        <Link id="how-it-works" to="/how-it-works" className="menu-item">
+        <Link
+          to="/how-it-works"
+          id="how-it-works"
+          className="menu-item"
+          activeClassName="active"
+        >
           How It Works
         </Link>
-        <Link id="team" to="/team" className="menu-item">
+        <Link
+          to="/team"
+          id="team"
+          className="menu-item"
+          activeClassName="active"
+        >
           Our Team
         </Link>
-        <Link id="sign-up" to="/sign-up" className="menu-item">
-          Sign Up
+        <Link
+          to="/donate"
+          id="donate"
+          className="menu-item buttonBlue"
+          activeClassName="active"
+        >
+          Give Help
         </Link>
-        <Link id="donate" to="/donate" className="menu-item">
-          Donate
+        <Link
+          to="/sign-up"
+          id="sign-up"
+          className="menu-item buttonPurple"
+          activeClassName="active"
+        >
+          Get Help
         </Link>
       </Menu>
     </StyledMobileNav>

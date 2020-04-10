@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { device } from "./MediaQueries"
 // import { theme } from "./Theme"
 
-export const StyledHomePage = styled.div`
+export const StyledHome = styled.div`
   display: grid;
   grid-template-columns: repeat(1, minmax(300px, 1fr));
   grid-template-rows: repeat(4, auto);

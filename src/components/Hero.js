@@ -11,8 +11,7 @@ const Hero = () => {
       query={heroQuery}
       render={data => {
         const hero = data.home
-        const buttons = data.home.buttonCta
-        console.log(data.home.buttonCta)
+        const buttons = data.home.heroButtonCta
 
         return (
           <StyledHero>
@@ -25,15 +24,23 @@ const Hero = () => {
             <div className="hero-content-wrapper">
               <div className="hero-content">
                 <h1 className="heading">
-                  {hero.heading}{" "}
-                  <br/>
-                  <span className="highlight">{hero.headingHighlight}</span>{" "}
+                  {hero.heroHeading} <br />
+                  <span className="highlight">
+                    {hero.heroHeadingHighlight}
+                  </span>{" "}
                 </h1>
-                <h5 className="sub-heading">{hero.subHeading}</h5>
+                <h5 className="sub-heading">{hero.heroSubHeading}</h5>
                 <div className="button-group">
                   {buttons.map(button => (
                     <div key={button.id} className="button-cta">
-                      <a className="button text" {... button.buttonText === "Give Help" ? {href: "/donate"} : {href: "/sign-up"}}>{button.buttonText}</a>
+                      <a
+                        className="button text"
+                        {...(button.buttonText === "Give Help"
+                          ? { href: "/donate" }
+                          : { href: "/sign-up" })}
+                      >
+                        {button.buttonText}
+                      </a>
                       <div className="subtext">{button.subtext}</div>
                     </div>
                   ))}
@@ -50,15 +57,15 @@ const Hero = () => {
 export const heroQuery = graphql`
   query {
     home: datoCmsHome {
-      image: backgroundImage {
+      image: heroBackgroundImage {
         fluid {
           ...GatsbyDatoCmsFluid
         }
       }
-      heading
-      headingHighlight
-      subHeading
-      buttonCta {
+      heroHeading
+      heroHeadingHighlight
+      heroSubHeading
+      heroButtonCta {
         id
         buttonText
         subtext

@@ -21,7 +21,7 @@ export const Nav = ({ location }) => {
         Home
       </Link>
       <Link
-        to="/about"
+        to="#aboutSection"
         id="about"
         className="menu-item"
         activeClassName="active"
@@ -80,7 +80,7 @@ export const MobileNav = ({ location }) => {
           Home
         </Link>
         <Link
-          to="/about"
+          to="#aboutSection"
           id="about"
           className="menu-item"
           activeClassName="active"

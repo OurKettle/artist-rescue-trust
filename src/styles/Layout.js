@@ -78,6 +78,11 @@ export const Wrapper = styled.div`
   }
 }
 
+ul li {
+  ${Nimbus}
+  font-size: 1.1rem;
+}
+
   /* Responsive Font Hack - media queries are not supported in typography.js */
   /* @media ${device.laptop} {
     p:not(.prompt),

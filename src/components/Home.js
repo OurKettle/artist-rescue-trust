@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 // Styles
-import { StyledHomePage } from "../styles/StyledHomePage"
+import { StyledHome } from "../styles/StyledHome"
 
 const HomePage = () => {
   return (
@@ -27,7 +27,7 @@ const HomePage = () => {
         const contentBlock3 = data.home.contentBlocks[2]
 
         return (
-          <StyledHomePage className="main-content">
+          <StyledHome id="aboutSection" className="main-content">
             <HelmetDatoCms>
               <script
                 src="https://donorbox.org/widget.js"
@@ -119,7 +119,7 @@ const HomePage = () => {
             <div className="box k">
               <Img fluid={h4.image.fluid} duration={1000} />
             </div>
-          </StyledHomePage>
+          </StyledHome>
         )
       }}
     />

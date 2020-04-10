@@ -7,6 +7,7 @@ import { HelmetDatoCms } from "gatsby-source-datocms"
 // Components
 import { MobileNav, Nav, FooterNav } from "./nav"
 // import logo from "../images/logo-white.png"
+import Hero from "../components/Hero"
 
 // Styles
 import { Wrapper, Header, Footer } from "../styles/Layout"
@@ -40,7 +41,10 @@ const Layout = ({ location, children }) => {
                     <Nav location={location.pathname} />
                   </div>
                 </Header>
-                <main>{children}</main>
+                <main>
+                  <Hero></Hero>
+                  {children}
+                </main>
               </div>
               <Footer>
                 <Img

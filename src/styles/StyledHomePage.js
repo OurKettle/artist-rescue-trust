@@ -4,7 +4,7 @@ import { device } from "./MediaQueries"
 
 export const StyledHomePage = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(1, minmax(300px, 1fr));
   grid-template-rows: repeat(4, auto);
   grid-auto-rows: auto;
   grid-auto-flow: row;
@@ -64,7 +64,11 @@ export const StyledHomePage = styled.div`
     text-align: center;
 
     i {
-      font-size: 8rem;
+      font-size: 3rem;
+
+      @media ${device.tabletUp} {
+        font-size: 8rem;
+      }
     }
   }
 

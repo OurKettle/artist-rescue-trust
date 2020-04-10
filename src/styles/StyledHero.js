@@ -13,18 +13,23 @@ import {
 
 export const StyledHero = styled.div`
   position: relative;
-  height: 1000px;
+  height: 1020px;
   background-color: ${theme.black};
+
+  @media ${device.mobileUp} {
+    height: 830px;
+  }
 
   @media ${device.tablet} {
     height: 800px;
   }
 
   @media ${device.laptop} {
-    height: 877px;
+    height: 750px;
   }
 
   @media ${device.desktop} {
+    height: 877px;
   }
 
   .hero-bg-image {
@@ -61,8 +66,13 @@ export const StyledHero = styled.div`
     height: 100%;
     text-align: center;
     color: ${theme.white};
-    padding: 64px 26px;
+    padding: 10px 0;
     transition: all 0.3s ease-out;
+
+    @media ${device.mobileUp} {
+      padding: 64px 0;
+      margin: auto;
+    }
 
     @media ${device.tablet} {
       padding: 149px 50px;

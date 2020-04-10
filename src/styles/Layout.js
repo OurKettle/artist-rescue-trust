@@ -29,19 +29,28 @@ export const Wrapper = styled.div`
     ${Nimbus};
     line-height: 2;
 
-    &.intro {
-    font-weight: 700;
-    margin-bottom: 50px; 
+      &.intro {
+      font-weight: 700;
+      margin-bottom: 50px; 
 
-    &.small {
-      width: 420px;
-    }
+      &.small {
+        width: 100%;
+
+        @media ${device.desktop} {
+          width: 420px;
+        }
+      }
     }
   }
 
   blockquote {
     ${Nimbus}
-    width: 279px;
+    width: 100%;
+    margin: 0;
+
+    @media ${device.tablet} {
+      width: 279px;
+    }
     
     p {
       font-size: 1.4rem;

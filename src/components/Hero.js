@@ -16,27 +16,24 @@ const Hero = () => {
 
         return (
           <StyledHero>
-            <div className="image-wrapper">
-              <div className="image">
-                <Img
-                  fluid={hero.image.fluid}
-                  duration={1000}
-                  alt="Hero Image"
-                />
-              </div>
-            </div>
+            <Img
+              className="hero-bg-image"
+              fluid={hero.image.fluid}
+              duration={1000}
+              alt="Hero Image"
+            />
             <div className="hero-content-wrapper">
               <div className="hero-content">
                 <h1 className="heading">
                   {hero.heading}{" "}
-                  <span className="highlight">{hero.headingHighlight}
-                  </span>{" "}
+                  <br/>
+                  <span className="highlight">{hero.headingHighlight}</span>{" "}
                 </h1>
                 <h5 className="sub-heading">{hero.subHeading}</h5>
                 <div className="button-group">
                   {buttons.map(button => (
                     <div key={button.id} className="button-cta">
-                      <button className="text">{button.buttonText}</button>
+                      <a className="button text" {... button.buttonText === "Give Help" ? {href: "/donate"} : {href: "/sign-up"}}>{button.buttonText}</a>
                       <div className="subtext">{button.subtext}</div>
                     </div>
                   ))}

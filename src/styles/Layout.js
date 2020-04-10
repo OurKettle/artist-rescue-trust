@@ -1,12 +1,9 @@
 import styled from "styled-components"
 import { device } from "./MediaQueries"
 import { theme } from "./Theme"
-import { blueGradient } from "./Mixins"
+import { blueGradient, Benton, Nimbus } from "./Mixins"
 
 import logo from "../images/logo.png"
-
-// Typography
-import { rhythm } from "../utils/typography"
 
 export const Wrapper = styled.div`
   position: relative;
@@ -14,11 +11,63 @@ export const Wrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
-  /* padding: 0 ${rhythm(3 / 4)}; */
 
-  ul {
-    margin-left: 0;
+  a {
+    text-decoration: none;
   }
+
+  .main-content {
+  .heading {
+    font-size: 2.5rem;
+    ${Benton};
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  p {
+    ${Nimbus};
+    line-height: 2;
+
+    &.intro {
+    font-weight: 700;
+    margin-bottom: 50px; 
+
+    &.small {
+      width: 420px;
+    }
+    }
+  }
+
+  blockquote {
+    ${Nimbus}
+    width: 279px;
+    
+    p {
+      font-size: 1.4rem;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    &.right {
+      text-align: right;
+      float: right;
+    }
+
+    &.left {
+      text-align: left;
+      float: left;
+    }
+
+    footer {
+      font-size: 1.4rem;
+
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+}
 
   /* Responsive Font Hack - media queries are not supported in typography.js */
   /* @media ${device.laptop} {
@@ -33,68 +82,61 @@ export const Wrapper = styled.div`
 `
 
 export const Header = styled.header`
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
 
-         .header-left {
-           ${blueGradient}
-           width: 286px;
-           height: 100%;
-           display: flex;
-           justify-content: flex-end;
-           transition: width 0.3s ease-out;
+  .header-left {
+    ${blueGradient}
+    width: 286px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    transition: width 0.3s ease-out;
 
-           @media ${device.tablet} {
-             width: 279px;
-           }
+    @media ${device.tablet} {
+      width: 279px;
+    }
 
-           @media ${device.laptop} {
-             width: 325px;
-           }
+    @media ${device.laptop} {
+      width: 325px;
+    }
 
-           @media ${device.desktop} {
-             width: 400px;
-           }
+    @media ${device.desktop} {
+      width: 400px;
+    }
 
-           @media ${device.desktopL} {
-             width: 591px;
-           }
+    @media ${device.desktopL} {
+      width: 591px;
+    }
 
-           .logo {
-             top: 2px;
-             left: 368px;
-             width: 191px;
-             height: 98px;
-             background: transparent url(${logo}) 0% 0% no-repeat padding-box;
-             mix-blend-mode: multiply;
-             background-size: cover;
-             opacity: 1;
-           }
-         }
+    .logo {
+      top: 2px;
+      left: 368px;
+      width: 191px;
+      height: 98px;
+      background: transparent url(${logo}) 0% 0% no-repeat padding-box;
+      mix-blend-mode: multiply;
+      background-size: cover;
+      opacity: 1;
+    }
+  }
 
-         .header-right {
-           display: flex;
-           justify-content: flex-end;
-           align-items: center;
-           width: 80%;
-           height: 100%;
-           padding-right: 13px;
-           transition: all 0.3s ease-out;
+  .header-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    padding-right: 13px;
+    transition: all 0.3s ease-out;
 
-           @media ${device.desktop} {
-             padding-right: 100px;
-           }
-
-           a {
-             box-shadow: none;
-             text-decoration: none;
-             color: ${theme.black};
-             font-weight: bold;
-           }
-         }
-       `
+    @media ${device.desktop} {
+      padding-right: 100px;
+    }
+  }
+`
 
 export const Footer = styled.footer`
   display: flex;
@@ -105,8 +147,14 @@ export const Footer = styled.footer`
   text-align: center;
 
   text-transform: uppercase;
-  padding: 30px 0;
+  padding: 86px 0;
 
   .logo {
+    width: 300px;
+    margin-bottom: 50px;
+
+    @media ${device.tabletUp} {
+      width: 442px;
+    }
   }
 `

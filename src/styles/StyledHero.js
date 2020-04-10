@@ -1,100 +1,196 @@
 import styled from "styled-components"
 import { device } from "./MediaQueries"
 import { theme } from "./Theme"
-import { blueGradient, pinkGradient } from "./Mixins"
+import {
+  buttonHover,
+  buttonHoverBefore,
+  blueGradient,
+  pinkGradient,
+  Benton,
+  Nimbus,
+  NimbusBold,
+} from "./Mixins"
 
 export const StyledHero = styled.div`
-         position: relative;
-         height: 877px;
-         background-color: ${theme.black};
+  position: relative;
+  height: 1000px;
+  background-color: ${theme.black};
 
-         .image-wrapper {
-           .image {
-             /* // The below lines stretch the image to match the width and height of the container */
-             position: absolute;
-             top: 0;
-             left: 0;
-             width: 100%;
-             height: 100%;
-             object-fit: cover;
-             /* // This is the property that emulates background-size: cover */
-           }
-         }
+  @media ${device.tablet} {
+    height: 800px;
+  }
 
-         .hero-content-wrapper {
-           position: absolute;
-           top: 0;
-           left: 0;
-           width: 100%;
-           height: 100%;
-         }
+  @media ${device.laptop} {
+    height: 877px;
+  }
 
-         .hero-content {
-           display: flex;
-           flex-direction: column;
-           justify-content: flex-start;
-           height: 100%;
-           text-align: center;
-           color: ${theme.white};
-           padding: 64px 26px;
-           transition: all 0.3s ease-out;
+  @media ${device.desktop} {
+  }
 
-           @media ${device.tablet} {
-             padding: 149px 50px;
-             margin: auto;
-           }
+  .hero-bg-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80%;
 
-           @media ${device.laptop} {
-             padding: 120px 50px;
-             width: 900px;
-             margin: auto;
-           }
+    @media ${device.tablet} {
+      height: 70%;
+    }
 
-           @media ${device.desktop} {
-             width: 1114px;
-           }
+    @media ${device.laptop} {
+    }
 
-           h1,
-           h5 {
-             color: ${theme.white};
-             line-height: 2;
-           }
+    @media ${device.desktop} {
+      height: 100%;
+    }
+  }
 
-           .heading {
-             font-size: 1.5rem;
+  .hero-content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-             @media ${device.desktop} {
-               font-size: 3.5rem;
-             }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    text-align: center;
+    color: ${theme.white};
+    padding: 64px 26px;
+    transition: all 0.3s ease-out;
 
-             .highlight {
-               background: ${theme.white};
-               color: ${theme.black};
-               padding: 3px 10px;
-             }
-           }
+    @media ${device.tablet} {
+      padding: 149px 50px;
+      margin: auto;
+    }
 
-           .button-group {
-             display: flex;
-             flex-direction: column;
-             justify-content: space-between;
-             align-items: center;
+    @media ${device.laptop} {
+      padding: 120px 0 0 0;
+      width: 900px;
+      margin: auto;
+    }
 
-             @media ${device.tabletUp} {
-               flex-direction: row;
-             }
+    @media ${device.desktop} {
+      width: 1330px;
+    }
 
-             button {
-               ${blueGradient};
-             }
+    h1,
+    h5 {
+      color: ${theme.white};
+      line-height: 1.5;
+    }
 
-             .button-cta {
-               &:last-of-type {
-                 button {
-                   ${pinkGradient};
-                 }
-               }
-             }
-           }
-         }
-       `
+    .heading {
+      font-size: 1.5rem;
+      ${NimbusBold}
+      padding: 0 35px;
+      letter-spacing: 1px;
+
+      @media ${device.desktop} {
+        font-size: 3.5rem;
+        padding: 0;
+      }
+
+      .highlight {
+        display: inline-block;
+        background: ${theme.white};
+        color: ${theme.black};
+        padding: 3px 10px 6px;
+        margin-top: 37px;
+      }
+    }
+
+    .sub-heading {
+      ${Nimbus}
+      font-size: 1.1rem;
+      padding: 0 70px;
+
+      @media ${device.desktop} {
+        font-size: 1.6rem;
+        padding: 0 275px;
+        margin: 0;
+      }
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+
+      @media ${device.tabletUp} {
+        flex-direction: row;
+        margin-top: 80px;
+      }
+
+      .button-cta {
+        width: 287px;
+        margin-bottom: 30px;
+
+        a {
+          color: ${theme.black};
+        }
+
+        .button {
+          display: block;
+          width: 100%;
+          ${Benton};
+          font-size: 2.5rem;
+          padding: 10px 0;
+          margin-bottom: 20px;
+          border: 0;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        &:first-of-type {
+          .button {
+            ${blueGradient};
+            ${buttonHover};
+
+            &:before {
+              ${buttonHoverBefore};
+              ${pinkGradient};
+            }
+
+            &:hover {
+              &:before {
+                opacity: 1;
+              }
+            }
+          }
+        }
+
+        &:last-of-type {
+          .button {
+            ${buttonHover};
+            ${pinkGradient};
+
+            &:before {
+              ${blueGradient};
+              ${buttonHoverBefore};
+            }
+
+            &:hover {
+              &:before {
+                opacity: 1;
+              }
+            }
+          }
+        }
+
+        .subtext {
+          ${Nimbus}
+          padding: 0 20px;
+        }
+      }
+    }
+  }
+`

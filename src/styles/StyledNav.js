@@ -1,19 +1,19 @@
 import styled from "styled-components"
 import { device } from "./MediaQueries"
 import { theme } from "./Theme"
-import { blueGradient, pinkGradient } from "./Mixins"
+import {
+  Button,
+  buttonHover,
+  buttonHoverBefore,
+  blueGradient,
+  blueGradientReverse,
+  pinkGradient,
+  pinkGradientReverse,
+  Benton,
+} from "./Mixins"
 
 export const StyledNav = styled.nav`
   display: none;
-  text-transform: uppercase;
-
-  @media ${device.laptop} {
-    font-size: 1rem;
-  }
-
-  @media ${device.desktop} {
-    font-size: 1.2rem;
-  }
 
   @media ${device.laptop} {
     display: block;
@@ -21,6 +21,19 @@ export const StyledNav = styled.nav`
 
   a {
     position: relative;
+    color: ${theme.black};
+    ${Benton}
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s ease-out;
+
+    @media ${device.laptop} {
+      font-size: 1rem;
+    }
+
+    @media ${device.desktop} {
+      font-size: 1.2rem;
+    }
 
     &:hover,
     &.active {
@@ -28,20 +41,42 @@ export const StyledNav = styled.nav`
     }
 
     &.buttonBlue {
-      width: 154px;
-      padding: 10px 20px;
+      ${Button};
       ${blueGradient};
       margin-left: 15px;
+      ${buttonHover};
 
       @media ${device.desktop} {
         margin-left: 30px;
       }
+
+      &:before {
+        ${blueGradientReverse};
+        ${buttonHoverBefore};
+      }
+
+      &:hover {
+        &:before {
+          opacity: 1;
+        }
+      }
     }
 
     &.buttonPurple {
-      width: 154px;
-      padding: 10px 20px;
+      ${Button};
       ${pinkGradient};
+      ${buttonHover};
+
+      &:before {
+        ${pinkGradientReverse};
+        ${buttonHoverBefore};
+      }
+
+      &:hover {
+        &:before {
+          opacity: 1;
+        }
+      }
     }
   }
 
@@ -55,8 +90,13 @@ export const StyledNav = styled.nav`
 
 export const StyledMobileNav = styled.div`
   text-transform: uppercase;
+  ${Benton}
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 
   a {
+    ${Benton};
+    font-size: 1rem;
     position: relative;
     color: ${theme.white};
 
@@ -66,19 +106,13 @@ export const StyledMobileNav = styled.div`
     }
 
     &.buttonBlue {
-      padding: 10px 20px;
-      text-align: center;
+      ${Button}
       ${blueGradient};
-      color: ${theme.black};
-      margin-top: 30px;
     }
 
     &.buttonPurple {
-      padding: 10px 20px;
-      text-align: center;
+      ${Button}
       ${pinkGradient};
-      color: ${theme.black};
-      margin-top: 30px;
     }
   }
 
@@ -93,6 +127,10 @@ export const StyledMobileNav = styled.div`
     right: 30px;
     top: 45px;
     text-transform: uppercase;
+
+    .bm-icon {
+      margin: 0;
+    }
 
     button {
       &:focus {
@@ -146,6 +184,7 @@ export const StyledMobileNav = styled.div`
   }
 
   .bm-item-list {
+    height: auto !important;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

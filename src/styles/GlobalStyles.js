@@ -1,4 +1,7 @@
-import styled from "styled-components"
-// import { theme } from "./Theme"
+import { createGlobalStyle } from "styled-components"
 
-export const Container = styled.div``
+export const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+  }
+`

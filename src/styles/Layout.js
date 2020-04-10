@@ -156,7 +156,15 @@ export const Footer = styled.footer`
   text-align: center;
 
   text-transform: uppercase;
-  padding: 86px 0;
+  padding: 50px 20px 40px;
+
+  @media ${device.mobileLUp} {
+    padding: 40px;
+  }
+
+  @media ${device.tabletUp} {
+    padding: 86px 60px;
+  }
 
   .logo {
     width: 300px;

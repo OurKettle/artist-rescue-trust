@@ -130,9 +130,12 @@ export const StyledMobileNav = styled.div`
 
     .bm-icon {
       margin: 0;
+      position: relative;
+      top: -5px;
     }
 
     button {
+      top: -5px !important;
       &:focus {
         outline: none;
       }
@@ -196,6 +199,7 @@ export const StyledMobileNav = styled.div`
     box-shadow: none;
     /* font-family: Montserrat; sans-serif; */
     font-size: 1.2rem;
+    margin-bottom: 10px;
   }
 
   .bm-overlay {
@@ -205,19 +209,24 @@ export const StyledMobileNav = styled.div`
 
 export const StyledFooterNav = styled.nav`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 350px;
+  width: 100%;
   transition: all 0.3s ease-out;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
+
+  @media ${device.mobileLUp} {
+    flex-direction: row;
+  }
 
   @media ${device.tabletUp} {
-    flex-direction: row;
     width: 700px;
     font-size: 1.2rem;
   }
 
   a {
     color: ${theme.white};
+    padding: 20px 0;
   }
 `

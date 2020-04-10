@@ -30,11 +30,7 @@ export const StyledHomePage = styled.div`
   }
 
   .box {
-    /* background-color: #444; */
-    /* color: #fff; */
-    /* border-radius: 5px; */
     padding: 20px;
-    /* font-size: 150%; */
   }
 
   iframe[name="donorbox"] {
@@ -81,6 +77,7 @@ export const StyledHomePage = styled.div`
     }
   }
 
+  /* Grid */
   .a {
     grid-column: auto;
     order: 2;

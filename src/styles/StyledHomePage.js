@@ -59,12 +59,21 @@ export const StyledHomePage = styled.div`
 
   .icon-group {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     text-align: center;
 
+    @media ${device.tabletUp} {
+      flex-direction: row;
+    }
+
+    .icon {
+      margin-bottom: 30px;
+    }
+
     i {
-      font-size: 3rem;
+      font-size: 6rem;
 
       @media ${device.tabletUp} {
         font-size: 8rem;

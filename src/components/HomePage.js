@@ -11,13 +11,20 @@ import { StyledHomePage } from "../styles/StyledHomePage"
 const HomePage = () => {
   return (
     <StaticQuery
-      query={heroQuery}
+      query={homeQuery}
       render={data => {
         const h1 = data.h1
         const h2 = data.h2
         const h3 = data.h3
         const h4 = data.h4
         const h5 = data.h5
+
+        const home = data.home
+        const quote1 = data.home.quotes[0]
+        const quote2 = data.home.quotes[1]
+        const contentBlock1 = data.home.contentBlocks[0]
+        const contentBlock2 = data.home.contentBlocks[1]
+        const contentBlock3 = data.home.contentBlocks[2]
 
         return (
           <StyledHomePage className="main-content">
@@ -32,14 +39,11 @@ const HomePage = () => {
             </div>
             <div className="box b">
               <blockquote className="right">
-                <p>
-                  “I think right now, we’re in an incredibly fragile position,
-                  all of us freelancers.”
-                </p>
+                <p>"{quote1.quote}"</p>
                 <footer>
-                  <span>Waxahatchee,</span>
+                  <span>{quote1.name},</span>
                   <br />
-                  singer/songwriter
+                  {quote1.title}
                 </footer>
               </blockquote>
             </div>
@@ -50,59 +54,28 @@ const HomePage = () => {
               <Img fluid={h5.image.fluid} duration={1000} />
             </div>
             <div className="box e">
-              <p className="intro">
-                Artist Rescue Trust (A.R.T.) exists is to provide relief funding
-                to musicians and artists whose ability to perform, tour and earn
-                a living has been negatively affected by COVID-19. A.R.T. will
-                provide $1,500 over three months to artists in need and amplify
-                the stories, performances and creations they had hoped to share
-                with the world before the pandemic limited their ability to do
-                so.
-              </p>
+              <p className="intro">{home.mainIntro}</p>
 
-              <h1 className="heading">The Problem</h1>
-              <p>
-                Those of us who are close to the arts community know the
-                financial pressures that have long been increasing for creators
-                and artists. The creative class — the musicians, authors,
-                designers, poets, producers — their livelihood and existence is
-                dependant on their ability to create and share their work, and
-                for their communities to access it. The widespread cancellation
-                of exhibits, live performances and events has had a
-                disproportionate impact on artistic communities across the
-                country - especially those who rely on these events to pay their
-                bills. Many artists supplement their incomes with gig work,
-                freelance or service industry jobs which are also severely
-                impacted. This is our moment to support the artists who fill our
-                hearts and minds with their work.
-              </p>
+              <h1 className="heading">{contentBlock1.heading}</h1>
+              <p className="intro small">{contentBlock1.callOut}</p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: contentBlock1.bodyNode.childMarkdownRemark.html,
+                }}
+              />
             </div>
             <div className="box f">
-              <h1 className="heading">What We Want To Do About It</h1>
-              <p className="intro small">
-                Our goal is to provide XX artists with $1500 over three months.
-              </p>
-              <p>
-                We call on those who have the means to support the creative
-                community to contribute to this fund.
-              </p>
-              <p>
-                We invite artists and creators who have financially suffered
-                from cancelled events and bookings to apply to receive funding.
-              </p>
-              <p>
-                A small percentage of funds donated will cover processing fees.
-                Artist Rescue Trust is not taking any percentage of funds raised
-                to cover administrative costs. All donations will go directly to
-                artists.
-              </p>
+              <h1 className="heading">{contentBlock2.heading}</h1>
+              <p className="intro small">{contentBlock2.callOut}</p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: contentBlock2.bodyNode.childMarkdownRemark.html,
+                }}
+              />
             </div>
             <div className="box g">
-              <h1 className="heading">Who Is This For?</h1>
-              <p className="intro">
-                Professional artistic creators whose primary source of income is
-                made through live performance, tours or exhibits.
-              </p>
+              <h1 className="heading">{contentBlock3.heading}</h1>
+              <p className="intro small">{contentBlock3.callOut}</p>
               <div className="icon-group">
                 <div className="icon">
                   <i className="far fa-circle"></i>
@@ -117,35 +90,29 @@ const HomePage = () => {
                   <p>Literary Artists</p>
                 </div>
               </div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: contentBlock3.bodyNode.childMarkdownRemark.html,
+                }}
+              />
             </div>
             <div className="box h donor-box">
-              <iframe
-                title="donor-box"
-                allowpaymentrequest=""
-                frameBorder="0"
-                height="900px"
-                name="donorbox"
-                scrolling="no"
-                seamless="seamless"
-                src="https://donorbox.org/embed/artist-rescue-trust"
-                width="100%"
-              ></iframe>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: home.donorboxEmbedNode.childMarkdownRemark.html,
+                }}
+              />
             </div>
             <div className="box i">
               <Img fluid={h2.image.fluid} duration={1000} />
             </div>
             <div className="box j">
               <blockquote className="left">
-                <p>
-                  “It’s probably going to be awhile before a lot of bands are
-                  going to be able to go out again because everybody’s just got
-                  to spend all their energy saving, trying to make up for the
-                  loss.”
-                </p>
+                <p>“{quote2.quote}”</p>
                 <footer>
-                  <span>Angelica Garcia,</span>
+                  <span>{quote2.name},</span>
                   <br />
-                  Latin pop singer
+                  {quote2.title}
                 </footer>
               </blockquote>
             </div>
@@ -159,8 +126,37 @@ const HomePage = () => {
   )
 }
 
-export const heroQuery = graphql`
+export const homeQuery = graphql`
   query {
+    home: datoCmsHome {
+      mainIntro
+      quotes {
+        ... on DatoCmsQuote {
+          id
+          quote
+          name
+          title
+        }
+      }
+      contentBlocks {
+        ... on DatoCmsContentBlock {
+          id
+          heading
+          callOut
+          bodyNode {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+      }
+      donorboxEmbedNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+
     h1: file(relativePath: { eq: "homepage-1.png" }) {
       image: childImageSharp {
         fluid(maxWidth: 400) {

@@ -57,8 +57,6 @@ const HowItWorks = () => {
             <div className="box i">
               <Img fluid={h2.image.fluid} duration={1000} />
             </div>
-            <div className="box j"></div>
-            <div className="box k"></div>
           </StyledHow>
         )
       }}

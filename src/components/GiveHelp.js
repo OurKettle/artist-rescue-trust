@@ -2,25 +2,20 @@ import React from "react"
 
 // Gatsby
 import { StaticQuery, graphql } from "gatsby"
-import { HelmetDatoCms } from "gatsby-source-datocms"
 
 // Styles
 import { StyledGrid } from "../styles/StyledGrid"
 
-const GetHelp = () => {
+const GiveHelp = () => {
   return (
     <StaticQuery
-      query={getHelpQuery}
+      query={giveHelpQuery}
       render={data => {
-        const getHelp = data.getHelp
-        const contentBlock1 = data.getHelp.contentBlocks[0]
-        const contentBlock2 = data.getHelp.contentBlocks[1]
+        const giveHelp = data.giveHelp
+        const contentBlock1 = data.giveHelp.contentBlocks[0]
 
         return (
           <StyledGrid className="main-content">
-            <HelmetDatoCms>
-              <script src="https://services.cognitoforms.com/scripts/embed.js"></script>
-            </HelmetDatoCms>
             <div className="box a">
               <h1 className="heading">{contentBlock1.heading}</h1>
               <div
@@ -31,20 +26,21 @@ const GetHelp = () => {
             </div>
 
             <div className="box b">
-              <h1 className="heading">{contentBlock2.heading}</h1>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: contentBlock2.bodyNode.childMarkdownRemark.html,
+                  __html: giveHelp.donorboxEmbedNode.childMarkdownRemark.html,
                 }}
               />
             </div>
 
-            <div className="box c">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: getHelp.cognitoFormEmbedNode.childMarkdownRemark.html,
-                }}
-              />
+            <div className="bix c">
+              <p className="footer">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: contentBlock1.footerNode.childMarkdownRemark.html,
+                  }}
+                />
+              </p>
             </div>
           </StyledGrid>
         )
@@ -53,9 +49,9 @@ const GetHelp = () => {
   )
 }
 
-export const getHelpQuery = graphql`
+export const giveHelpQuery = graphql`
   query {
-    getHelp: datoCmsGetHelp {
+    giveHelp: datoCmsGiveHelp {
       contentBlocks {
         ... on DatoCmsContentBlock {
           id
@@ -66,9 +62,14 @@ export const getHelpQuery = graphql`
               html
             }
           }
+          footerNode {
+            childMarkdownRemark {
+              html
+            }
+          }
         }
       }
-      cognitoFormEmbedNode {
+      donorboxEmbedNode {
         childMarkdownRemark {
           html
         }
@@ -77,4 +78,4 @@ export const getHelpQuery = graphql`
   }
 `
 
-export default GetHelp
+export default GiveHelp

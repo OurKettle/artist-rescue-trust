@@ -23,6 +23,15 @@ export const GlobalStyle = createGlobalStyle`
 
   .footer {
     font-size: .8rem;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        font-size: .8rem;
+      }
+    }
   }
 
   p {
@@ -84,4 +93,24 @@ ul li {
   font-size: 1.1rem;
   line-height: 2;
 }
+
+  iframe[name="donorbox"] {
+    max-width: 425px !important;
+    display: block !important;
+    margin: auto !important;
+    /* width: 100% !important;
+    max-width: 100% !important;
+    min-width: 310px !important;
+    max-height: none !important;
+
+    .secondary-tabs {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .donation-widget.tabs {
+      width: 100% !important;
+      max-width: 100% !important;
+    } */
+  }
 `

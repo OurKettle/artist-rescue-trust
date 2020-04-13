@@ -4,7 +4,7 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 
 // Styles
-import { StyledTeam } from "../styles/StyledTeam"
+import { StyledGrid } from "../styles/StyledGrid"
 
 const OurTeam = () => {
   return (
@@ -16,7 +16,7 @@ const OurTeam = () => {
         const contentBlock3 = data.ourTeam.contentBlocks[2]
 
         return (
-          <StyledTeam className="main-content">
+          <StyledGrid className="main-content">
             <div className="box a">
               <h1 className="heading">{contentBlock1.heading}</h1>
               <p className="intro small">{contentBlock1.callOut}</p>
@@ -38,7 +38,7 @@ const OurTeam = () => {
                 }}
               />
             </div>
-          </StyledTeam>
+          </StyledGrid>
         )
       }}
     />

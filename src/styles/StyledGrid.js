@@ -2,11 +2,11 @@ import styled from "styled-components"
 import { device } from "./MediaQueries"
 // import { theme } from "./Theme"
 
-export const StyledTeam = styled.div`
+export const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(1, minmax(300px, 644px));
   justify-content: center;
-  margin-top: 64px;
+  margin: 64px 0;
 
   @media ${device.desktop} {
     margin-top: 152px;

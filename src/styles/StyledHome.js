@@ -31,26 +31,6 @@ export const StyledHome = styled.div`
     padding: 20px;
   }
 
-  iframe[name="donorbox"] {
-    max-width: 425px !important;
-    display: block !important;
-    margin: auto !important;
-    /* width: 100% !important;
-    max-width: 100% !important;
-    min-width: 310px !important;
-    max-height: none !important;
-
-    .secondary-tabs {
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-
-    .donation-widget.tabs {
-      width: 100% !important;
-      max-width: 100% !important;
-    } */
-  }
-
   .icon-group {
     display: flex;
     flex-direction: column;

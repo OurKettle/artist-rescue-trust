@@ -40,8 +40,8 @@ export const Nav = ({ location }) => {
         Our Team
       </Link>
       <Link
-        to="/donate"
-        id="donate"
+        to="/give-help"
+        id="give-help"
         className="menu-item buttonBlue"
         activeClassName="active"
       >
@@ -104,8 +104,8 @@ export const MobileNav = ({ location }) => {
           Our Team
         </Link>
         <Link
-          to="/donate"
-          id="donate"
+          to="/give-help"
+          id="give-help"
           className="menu-item buttonBlue"
           activeClassName="active"
         >
@@ -144,8 +144,8 @@ export const FooterNav = () => {
         Privacy Policy
       </Link>
       <Link
-        to="/donate"
-        id="donate"
+        to="/give-help"
+        id="give-help"
         className="menu-item"
         activeClassName="active"
       >

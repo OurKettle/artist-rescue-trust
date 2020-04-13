@@ -5,7 +5,9 @@ import {
   buttonHover,
   buttonHoverBefore,
   blueGradient,
+  blueGradientReverse,
   pinkGradient,
+  pinkGradientReverse,
   Benton,
   Nimbus,
   NimbusBold,
@@ -80,7 +82,7 @@ export const StyledHero = styled.div`
     }
 
     @media ${device.laptop} {
-      padding: 120px 0 0 0;
+      padding: 70px 0 0 0;
       width: 900px;
       margin: auto;
     }
@@ -103,15 +105,28 @@ export const StyledHero = styled.div`
 
       @media ${device.desktop} {
         font-size: 3.5rem;
-        padding: 0;
+        padding: 0 200px;
+      }
+    }
+
+    .highlight {
+      background: ${theme.white};
+      color: ${theme.black};
+      ${NimbusBold}
+      font-size: 1.5rem;
+      width: 80%;
+      margin: 0 auto 37px;
+      padding: 3px 10px 6px;
+      letter-spacing: 1px;
+
+      @media ${device.laptop} {
+        width: 50%;
       }
 
-      .highlight {
-        display: inline-block;
-        background: ${theme.white};
-        color: ${theme.black};
-        padding: 3px 10px 6px;
-        margin-top: 37px;
+      @media ${device.desktop} {
+        width: 75%;
+        margin: 0 auto 37px;
+        font-size: 3.5rem;
       }
     }
 
@@ -144,6 +159,7 @@ export const StyledHero = styled.div`
 
         a {
           color: ${theme.black};
+          text-transform: uppercase;
         }
 
         .button {
@@ -167,7 +183,7 @@ export const StyledHero = styled.div`
 
             &:before {
               ${buttonHoverBefore};
-              ${pinkGradient};
+              ${blueGradientReverse};
             }
 
             &:hover {
@@ -184,7 +200,7 @@ export const StyledHero = styled.div`
             ${pinkGradient};
 
             &:before {
-              ${blueGradient};
+              ${pinkGradientReverse};
               ${buttonHoverBefore};
             }
 

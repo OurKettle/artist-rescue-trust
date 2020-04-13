@@ -25,10 +25,8 @@ const Hero = () => {
               <div className="hero-content">
                 <h1 className="heading">
                   {hero.heroHeading} <br />
-                  <span className="highlight">
-                    {hero.heroHeadingHighlight}
-                  </span>{" "}
                 </h1>
+                <span className="highlight">{hero.heroHeadingHighlight}</span>{" "}
                 <h5 className="sub-heading">{hero.heroSubHeading}</h5>
                 <div className="button-group">
                   {buttons.map(button => (

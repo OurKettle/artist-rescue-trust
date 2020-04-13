@@ -5,6 +5,10 @@ import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
+// Images
+import iconMusic from "../images/musical-artists.png"
+import iconVisual from "../images/visual-artists.png"
+import iconLiterary from "../images/literary-artists.png"
 // Styles
 import { StyledHome } from "../styles/StyledHome"
 
@@ -13,11 +17,13 @@ const HomePage = () => {
     <StaticQuery
       query={homeQuery}
       render={data => {
-        const h1 = data.h1
-        const h2 = data.h2
-        const h3 = data.h3
-        const h4 = data.h4
-        const h5 = data.h5
+        const h1 = data.homeImages.images[0]
+        const h2 = data.homeImages.images[1]
+        const h3 = data.homeImages.images[2]
+        const h4 = data.homeImages.images[3]
+        const h5 = data.homeImages.images[4]
+
+        console.log(data.homeImages.images)
 
         const home = data.home
         const quote1 = data.home.quotes[0]
@@ -35,7 +41,7 @@ const HomePage = () => {
               ></script>
             </HelmetDatoCms>
             <div className="box a">
-              <Img className="image" fluid={h1.image.fluid} duration={1000} />
+              <Img className="image" fluid={h1.image} duration={1000} />
             </div>
             <div className="box b">
               <blockquote className="right">
@@ -48,10 +54,10 @@ const HomePage = () => {
               </blockquote>
             </div>
             <div className="box c">
-              <Img fluid={h3.image.fluid} duration={1000} />
+              <Img fluid={h3.image} duration={1000} />
             </div>
             <div className="box d">
-              <Img fluid={h5.image.fluid} duration={1000} />
+              <Img fluid={h5.image} duration={1000} />
             </div>
             <div className="box e">
               <p className="intro">{home.mainIntro}</p>
@@ -78,15 +84,15 @@ const HomePage = () => {
               <p className="intro small">{contentBlock3.callOut}</p>
               <div className="icon-group">
                 <div className="icon">
-                  <i className="far fa-circle"></i>
+                  <img src={iconMusic} alt="Musical Artists Icon" />
                   <p>Musical Artists</p>
                 </div>
                 <div className="icon">
-                  <i className="far fa-circle"></i>
+                  <img src={iconVisual} alt="Visual Artists Icon" />
                   <p>Visual Artists</p>
                 </div>
                 <div className="icon">
-                  <i className="far fa-circle"></i>
+                  <img src={iconLiterary} alt="Literary Artists Icon" />
                   <p>Literary Artists</p>
                 </div>
               </div>
@@ -104,7 +110,7 @@ const HomePage = () => {
               />
             </div>
             <div className="box i">
-              <Img fluid={h2.image.fluid} duration={1000} />
+              <Img fluid={h2.image} duration={1000} />
             </div>
             <div className="box j">
               <blockquote className="left">
@@ -117,7 +123,7 @@ const HomePage = () => {
               </blockquote>
             </div>
             <div className="box k">
-              <Img fluid={h4.image.fluid} duration={1000} />
+              <Img fluid={h4.image} duration={1000} />
             </div>
           </StyledHome>
         )
@@ -156,39 +162,10 @@ export const homeQuery = graphql`
         }
       }
     }
-
-    h1: file(relativePath: { eq: "homepage-1.png" }) {
-      image: childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    h2: file(relativePath: { eq: "homepage-2.png" }) {
-      image: childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    h3: file(relativePath: { eq: "homepage-3.png" }) {
-      image: childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    h4: file(relativePath: { eq: "homepage-4.png" }) {
-      image: childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    h5: file(relativePath: { eq: "homepage-5.png" }) {
-      image: childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
+    homeImages: datoCmsHome {
+      images {
+        image: fluid(maxWidth: 400) {
+          ...GatsbyDatoCmsFluid
         }
       }
     }

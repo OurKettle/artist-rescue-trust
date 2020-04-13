@@ -63,7 +63,37 @@ export const StyledHome = styled.div`
     }
 
     .icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
       margin-bottom: 30px;
+      height: 175px;
+
+      @media ${device.tabletUp} {
+        justify-content: space-between;
+      }
+
+      :first-of-type img {
+        margin-top: 0;
+      }
+
+      :nth-child(2) img {
+        margin-top: 15px;
+      }
+
+      :last-of-type img {
+        margin-top: 22px;
+      }
+
+      img {
+        width: 100px;
+      }
+
+      p {
+        align-self: flex-end;
+        margin: 0;
+      }
     }
 
     i {

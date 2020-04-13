@@ -48,8 +48,8 @@ export const Nav = ({ location }) => {
         Give Help
       </Link>
       <Link
-        to="/sign-up"
-        id="sign-up"
+        to="/get-help"
+        id="get-help"
         className="menu-item buttonPurple"
         activeClassName="active"
       >
@@ -112,8 +112,8 @@ export const MobileNav = ({ location }) => {
           Give Help
         </Link>
         <Link
-          to="/sign-up"
-          id="sign-up"
+          to="/get-help"
+          id="get-help"
           className="menu-item buttonPurple"
           activeClassName="active"
         >
@@ -144,20 +144,20 @@ export const FooterNav = () => {
         Privacy Policy
       </Link>
       <Link
-        to="/sign-up"
-        id="sign-up"
-        className="menu-item"
-        activeClassName="active"
-      >
-        Sign Up
-      </Link>
-      <Link
         to="/donate"
         id="donate"
         className="menu-item"
         activeClassName="active"
       >
-        Donate
+        Give Help
+      </Link>
+      <Link
+        to="/get-help"
+        id="get-help"
+        className="menu-item"
+        activeClassName="active"
+      >
+        Get Help
       </Link>
     </StyledFooterNav>
   )

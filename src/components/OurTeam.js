@@ -11,9 +11,9 @@ const OurTeam = () => {
     <StaticQuery
       query={ourTeamQuery}
       render={data => {
-        const contentBlock1 = data.how.contentBlocks[0]
-        const contentBlock2 = data.how.contentBlocks[1]
-        const contentBlock3 = data.how.contentBlocks[2]
+        const contentBlock1 = data.ourTeam.contentBlocks[0]
+        const contentBlock2 = data.ourTeam.contentBlocks[1]
+        const contentBlock3 = data.ourTeam.contentBlocks[2]
 
         return (
           <StyledTeam className="main-content">
@@ -47,7 +47,7 @@ const OurTeam = () => {
 
 export const ourTeamQuery = graphql`
   query {
-    how: datoCmsOurTeam {
+    ourTeam: datoCmsOurTeam {
       contentBlocks {
         ... on DatoCmsContentBlock {
           id

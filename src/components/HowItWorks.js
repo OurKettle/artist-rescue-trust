@@ -12,19 +12,19 @@ const HowItWorks = () => {
     <StaticQuery
       query={homeQuery}
       render={data => {
-        const h1 = data.h1
-        const h2 = data.h2
-        const h3 = data.h3
+        const h1 = data.howImages.images[0]
+        const h2 = data.howImages.images[1]
+        const h3 = data.howImages.images[2]
         const contentBlock1 = data.how.contentBlocks[0]
         const contentBlock2 = data.how.contentBlocks[1]
 
         return (
           <StyledHow className="main-content">
             <div className="box a">
-              <Img className="image" fluid={h1.image.fluid} duration={1000} />
+              <Img className="image" fluid={h1.image} duration={1000} />
             </div>
             <div className="box b">
-              <Img fluid={h3.image.fluid} duration={1000} />
+              <Img fluid={h3.image} duration={1000} />
             </div>
             <div className="box c"></div>
             <div className="box d"></div>
@@ -55,7 +55,7 @@ const HowItWorks = () => {
             <div className="box g"></div>
             <div className="box h"></div>
             <div className="box i">
-              <Img fluid={h2.image.fluid} duration={1000} />
+              <Img fluid={h2.image} duration={1000} />
             </div>
           </StyledHow>
         )
@@ -86,38 +86,10 @@ export const homeQuery = graphql`
       }
     }
 
-    h1: file(relativePath: { eq: "homepage-1.png" }) {
-      image: childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    h2: file(relativePath: { eq: "homepage-2.png" }) {
-      image: childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    h3: file(relativePath: { eq: "homepage-3.png" }) {
-      image: childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    h4: file(relativePath: { eq: "homepage-4.png" }) {
-      image: childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    h5: file(relativePath: { eq: "homepage-5.png" }) {
-      image: childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
+    howImages: datoCmsHow {
+      images {
+        image: fluid(maxWidth: 400) {
+          ...GatsbyDatoCmsFluid
         }
       }
     }

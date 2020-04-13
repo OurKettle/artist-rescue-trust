@@ -226,6 +226,8 @@ export const StyledFooterNav = styled.nav`
   }
 
   a {
+    ${Benton}
+    letter-spacing: 1.5px;
     color: ${theme.white};
     padding: 20px 0;
   }

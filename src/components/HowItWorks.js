@@ -19,7 +19,7 @@ const HowItWorks = () => {
         const contentBlock2 = data.how.contentBlocks[1]
 
         return (
-          <StyledHow id="aboutSection" className="main-content">
+          <StyledHow className="main-content">
             <div className="box a">
               <Img className="image" fluid={h1.image.fluid} duration={1000} />
             </div>

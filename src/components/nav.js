@@ -36,7 +36,7 @@ export const Nav = ({ location }) => {
       >
         How It Works
       </Link>
-      <Link to="/team" id="team" className="menu-item" activeClassName="active">
+      <Link to="/our-team" id="team" className="menu-item" activeClassName="active">
         Our Team
       </Link>
       <Link
@@ -96,7 +96,7 @@ export const MobileNav = ({ location }) => {
           How It Works
         </Link>
         <Link
-          to="/team"
+          to="/our-team"
           id="team"
           className="menu-item"
           activeClassName="active"

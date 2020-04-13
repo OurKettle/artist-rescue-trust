@@ -8,8 +8,6 @@ export const StyledHow = styled.div`
   grid-template-rows: repeat(4, auto);
   grid-auto-rows: auto;
   grid-auto-flow: row;
-  background-color: #fff;
-  color: #444;
 
   @media ${device.tabletUp} {
     grid-gap: 40px 0;

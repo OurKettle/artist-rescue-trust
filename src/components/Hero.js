@@ -34,8 +34,8 @@ const Hero = () => {
                       <a
                         className="button text"
                         {...(button.buttonText === "Give Help"
-                          ? { href: "/donate" }
-                          : { href: "/sign-up" })}
+                          ? { href: "/give-help" }
+                          : { href: "/get-help" })}
                       >
                         {button.buttonText}
                       </a>

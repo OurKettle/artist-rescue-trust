@@ -5,7 +5,9 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.7",
+    "dotenv": "^8.2.0",
     "faunadb": "^2.13.1",
     "gatsby": "^2.19.45",
     "gatsby-background-image": "^1.0.1",

@@ -167,6 +167,7 @@ export const StyledHero = styled.div`
           width: 100%;
           ${Benton};
           font-size: 2.5rem;
+          letter-spacing: 1.5px;
           padding: 10px 0;
           margin-bottom: 20px;
           border: 0;

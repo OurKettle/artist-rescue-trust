@@ -9,6 +9,6 @@ export async function handler(event, context) {
 
   return {
     statusCode: 200,
-    body: data.results.title,
+    body: data.title,
   }
 }

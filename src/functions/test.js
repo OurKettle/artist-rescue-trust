@@ -1,7 +1,16 @@
 exports.handler = async (event, context) => {
-  console.log("Test")
+  let formData = JSON.parse(event.body)
+  console.log(formData)
+
+  if (errors) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify(errors),
+    }
+  }
+  
   return {
     statusCode: 200,
-    body: "Hello, World",
+    body: formData,
   }
 }

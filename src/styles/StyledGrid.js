@@ -14,6 +14,7 @@ export const StyledGrid = styled.div`
 
   .box {
     padding: 20px;
+    margin-bottom: 30px;
   }
 
   hr {

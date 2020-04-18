@@ -6,7 +6,6 @@ import { HelmetDatoCms } from "gatsby-source-datocms"
 
 // Components
 import { MobileNav, Nav, FooterNav } from "./nav"
-// import logo from "../images/logo-white.png"
 import Hero from "../components/Hero"
 
 // Styles

@@ -8,13 +8,21 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
-    a {
+  a {
     text-decoration: none;
   }
 
   .main-content {
   .heading {
     font-size: 2.5rem;
+    ${Benton};
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
     ${Benton};
     letter-spacing: 2px;
     text-transform: uppercase;

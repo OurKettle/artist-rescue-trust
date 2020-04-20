@@ -14,7 +14,7 @@ exports.handler = (event, context, callback) => {
 
   /* construct the fauna query */
   return client
-    .query(q.Create(q.Ref("classes/user"), user))
+    .query(q.Create(q.Ref("classes/users"), user))
     .then(response => {
       console.log("success", response)
       return callback(null, {

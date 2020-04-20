@@ -1,14 +1,16 @@
-export async function handler(event, context) {
-  const fetch = require("node-fetch")
+exports.handler = async (event, context) => {
+  const formData = JSON.parse(event.body)
+  console.log(formData)
 
-  fetch("https://jsonplaceholder.typicode.com/todos/1")
-    .then(resp => resp.json())
-    .then(function(data) {
-      const data = data.results
-    })
+  // if (errors) {
+  //   return {
+  //     statusCode: 500,
+  //     body: JSON.stringify(errors),
+  //   }
+  // }
 
   return {
     statusCode: 200,
-    body: data.title,
+    body: formData,
   }
 }

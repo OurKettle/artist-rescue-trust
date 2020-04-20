@@ -8,7 +8,7 @@ const q = faunadb.query
 console.log(chalk.cyan("Creating your FaunaDB Database...\n"))
 
 // 1. Check for required enviroment variables
-if (!process.env.fnADp5Xx5gACEyuIYWZera0bRNxvWshHKhXyyjx7) {
+if (!process.env.FAUNADB_SECRET) {
   console.log(
     chalk.yellow("Required FAUNADB_SECRET enviroment variable not found.")
   )
@@ -33,22 +33,18 @@ if (!process.env.fnADp5Xx5gACEyuIYWZera0bRNxvWshHKhXyyjx7) {
         console.log("Please supply a faunaDB server key")
         process.exit(1)
       }
-      createFaunaDB(process.env.fnADp5Xx5gACEyuIYWZera0bRNxvWshHKhXyyjx7).then(
-        () => {
-          console.log("Database created")
-        }
-      )
+      createFaunaDB(process.env.FAUNADB_SECRET).then(() => {
+        console.log("Database created")
+      })
     })
   }
 }
 
 // Has var. Do the thing
-if (process.env.fnADp5Xx5gACEyuIYWZera0bRNxvWshHKhXyyjx7) {
-  createFaunaDB(process.env.fnADp5Xx5gACEyuIYWZera0bRNxvWshHKhXyyjx7).then(
-    () => {
-      console.log("Database created")
-    }
-  )
+if (process.env.FAUNADB_SECRET) {
+  createFaunaDB(process.env.FAUNADB_SECRET).then(() => {
+    console.log("Database created")
+  })
 }
 
 /* idempotent operation */

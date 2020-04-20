@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import TOS from "../components/TermsOfService"
 
 const IndexPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -10,7 +11,7 @@ const IndexPage = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Terms of Service" />
-      <div>Terms of Service</div>
+      <TOS></TOS>
     </Layout>
   )
 }

@@ -4,22 +4,29 @@ import { StaticQuery, graphql } from "gatsby"
 
 import { StyledGrid } from "../styles/StyledGrid"
 
-const PrivacyPolicy = () => {
+const TermsOfService = () => {
   return (
     <StaticQuery
-      query={privacyQuery}
+      query={termsOfServiceQuery}
       render={data => {
-        const privacy = data.privacy.contentBlocks
+        const tos = data.tos.contentBlocks
+        const callOut = data.tos.contentBlocks
+
+        const hasCallout = () => {
+          if (data.tos.contentBlocks.callout) {
+            return <p className="intro">{tos.callOut}</p>
+          }
+        }
 
         return (
           <StyledGrid className="main-content">
-            {privacy.map(p => (
-              <div className="box" key={p.id}>
-                <h1 className="heading">{p.heading}</h1>
-                {p.callOut ? <p className="intro">{p.callOut}</p> : ""}
+            {tos.map(terms => (
+              <div className="box" key={terms.id}>
+                <h1 className="heading">{terms.heading}</h1>
+                {hasCallout()}
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: p.bodyNode.childMarkdownRemark.html,
+                    __html: terms.bodyNode.childMarkdownRemark.html,
                   }}
                 />
               </div>
@@ -31,9 +38,9 @@ const PrivacyPolicy = () => {
   )
 }
 
-export const privacyQuery = graphql`
+export const termsOfServiceQuery = graphql`
   query {
-    privacy: datoCmsPrivacy {
+    tos: datoCmsTermsOfService {
       contentBlocks {
         ... on DatoCmsContentBlock {
           id
@@ -50,4 +57,4 @@ export const privacyQuery = graphql`
   }
 `
 
-export default PrivacyPolicy
+export default TermsOfService

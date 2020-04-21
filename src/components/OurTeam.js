@@ -26,7 +26,11 @@ const OurTeam = () => {
             <StyledGrid className="main-content">
               <div className="box a">
                 <h1 className="heading">{contentBlock1.heading}</h1>
-                <p className="intro">{contentBlock1.callOut}</p>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: contentBlock1.bodyNode.childMarkdownRemark.html,
+                  }}
+                />
                 <hr></hr>
               </div>
               <div className="box b">
@@ -83,7 +87,6 @@ export const ourTeamQuery = graphql`
         ... on DatoCmsContentBlock {
           id
           heading
-          callOut
           bodyNode {
             childMarkdownRemark {
               html

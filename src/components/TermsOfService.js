@@ -10,7 +10,6 @@ const TermsOfService = () => {
       query={termsOfServiceQuery}
       render={data => {
         const tos = data.tos.contentBlocks
-        const callOut = data.tos.contentBlocks
 
         const hasCallout = () => {
           if (data.tos.contentBlocks.callout) {

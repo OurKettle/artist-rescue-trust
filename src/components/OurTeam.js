@@ -15,6 +15,7 @@ const OurTeam = () => {
       render={data => {
         const team = data.ourTeam
         const teams = data.ourTeam.teamContentBlocks
+        const avatars = data.ourTeam.avatars
 
         return (
           <StyledTeam>
@@ -27,6 +28,12 @@ const OurTeam = () => {
                   }}
                 />
                 <hr></hr>
+              </div>
+
+              <div className="avatar-grid">
+                {avatars.map((avatar, index) => (
+                  <Img key={index} fluid={avatar.fluid} duration={1000} />
+                ))}
               </div>
 
               {teams.map(team => (
@@ -59,6 +66,11 @@ export const ourTeamQuery = graphql`
       introNode {
         childMarkdownRemark {
           html
+        }
+      }
+      avatars {
+        fluid(maxWidth: 187) {
+          ...GatsbyDatoCmsFluid
         }
       }
       teamContentBlocks {

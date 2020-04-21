@@ -13,27 +13,29 @@ const OurTeam = () => {
     <StaticQuery
       query={ourTeamQuery}
       render={data => {
-        const kettleLogo = data.kettleLogo
-        const ocupopLogo = data.ocupopLogo
-        const yolLogo = data.yolLogo
-        const contentBlock1 = data.ourTeam.contentBlocks[0]
-        const contentBlock2 = data.ourTeam.contentBlocks[1]
-        const contentBlock3 = data.ourTeam.contentBlocks[2]
-        const contentBlock4 = data.ourTeam.contentBlocks[3]
+        // const kettleLogo = data.kettleLogo
+        // const ocupopLogo = data.ocupopLogo
+        // const yolLogo = data.yolLogo
+
+        const team = data.ourTeam
+        // const contentBlock1 = data.ourTeam.contentBlocks[0]
+        // const contentBlock2 = data.ourTeam.contentBlocks[1]
+        // const contentBlock3 = data.ourTeam.contentBlocks[2]
+        // const contentBlock4 = data.ourTeam.contentBlocks[3]
 
         return (
           <StyledTeam>
             <StyledGrid className="main-content">
               <div className="box a">
-                <h1 className="heading">{contentBlock1.heading}</h1>
+                <h1 className="heading">{team.heading}</h1>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: contentBlock1.bodyNode.childMarkdownRemark.html,
+                    __html: team.introNode.childMarkdownRemark.html,
                   }}
                 />
                 <hr></hr>
               </div>
-              <div className="box b">
+              {/* <div className="box b">
                 <Img
                   className="team-logo"
                   fluid={kettleLogo.fluid}
@@ -71,7 +73,7 @@ const OurTeam = () => {
                     __html: contentBlock4.bodyNode.childMarkdownRemark.html,
                   }}
                 />
-              </div>
+              </div> */}
             </StyledGrid>
           </StyledTeam>
         )
@@ -83,10 +85,16 @@ const OurTeam = () => {
 export const ourTeamQuery = graphql`
   query {
     ourTeam: datoCmsOurTeam {
-      contentBlocks {
-        ... on DatoCmsContentBlock {
+      heading
+      introNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+      teamContentBlocks {
+        ... on DatoCmsTeamContentBlock {
           id
-          heading
+          # logo
           bodyNode {
             childMarkdownRemark {
               html
@@ -95,21 +103,21 @@ export const ourTeamQuery = graphql`
         }
       }
     }
-    kettleLogo: datoCmsAsset(filename: { eq: "kettle-logo.png" }) {
-      fluid(maxWidth: 400, maxHeight: 181) {
-        ...GatsbyDatoCmsFluid
-      }
-    }
-    ocupopLogo: datoCmsAsset(filename: { eq: "ocupop-logo.png" }) {
-      fluid(maxWidth: 400, maxHeight: 181) {
-        ...GatsbyDatoCmsFluid
-      }
-    }
-    yolLogo: datoCmsAsset(filename: { eq: "yol-logo.png" }) {
-      fluid(maxWidth: 400, maxHeight: 181) {
-        ...GatsbyDatoCmsFluid
-      }
-    }
+    # kettleLogo: datoCmsAsset(filename: { eq: "kettle-logo.png" }) {
+    #   fluid(maxWidth: 400, maxHeight: 181) {
+    #     ...GatsbyDatoCmsFluid
+    #   }
+    # }
+    # ocupopLogo: datoCmsAsset(filename: { eq: "ocupop-logo.png" }) {
+    #   fluid(maxWidth: 400, maxHeight: 181) {
+    #     ...GatsbyDatoCmsFluid
+    #   }
+    # }
+    # yolLogo: datoCmsAsset(filename: { eq: "yol-logo.png" }) {
+    #   fluid(maxWidth: 400, maxHeight: 181) {
+    #     ...GatsbyDatoCmsFluid
+    #   }
+    # }
   }
 `
 

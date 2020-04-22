@@ -36,7 +36,12 @@ export const Nav = ({ location }) => {
       >
         How It Works
       </Link>
-      <Link to="/our-team" id="team" className="menu-item" activeClassName="active">
+      <Link
+        to="/our-team"
+        id="team"
+        className="menu-item"
+        activeClassName="active"
+      >
         Our Team
       </Link>
       <Link
@@ -144,6 +149,14 @@ export const FooterNav = () => {
         Privacy Policy
       </Link>
       <Link
+        to="/resources"
+        id="resources"
+        className="menu-item"
+        activeClassName="active"
+      >
+        Resources
+      </Link>
+      <Link
         to="/give-help"
         id="give-help"
         className="menu-item"
@@ -158,14 +171,6 @@ export const FooterNav = () => {
         activeClassName="active"
       >
         Get Help
-      </Link>
-      <Link
-        to="/resources"
-        id="resources"
-        className="menu-item"
-        activeClassName="active"
-      >
-        Resources
       </Link>
     </StyledFooterNav>
   )

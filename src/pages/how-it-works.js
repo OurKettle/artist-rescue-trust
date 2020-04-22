@@ -9,11 +9,12 @@ import HowItWorks from "../components/HowItWorks"
 
 const IndexPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
+  const image = data.socialImage.fluid
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="How It Works"/>
-      <HowItWorks/>
+      <SEO title="How It Works" image={image} />
+      <HowItWorks />
     </Layout>
   )
 }
@@ -23,6 +24,11 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    socialImage: datoCmsAsset(filename: { eq: "social-card.jpg" }) {
+      fluid {
+        ...GatsbyDatoCmsFluid
       }
     }
   }

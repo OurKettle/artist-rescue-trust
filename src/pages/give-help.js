@@ -7,11 +7,12 @@ import GiveHelp from "../components/GiveHelp"
 
 const IndexPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
+  const image = data.socialImage.fluid
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Donate" />
-      <GiveHelp/>
+      <SEO title="Donate" image={image} />
+      <GiveHelp />
     </Layout>
   )
 }
@@ -21,6 +22,11 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    socialImage: datoCmsAsset(filename: { eq: "social-card.jpg" }) {
+      fluid {
+        ...GatsbyDatoCmsFluid
       }
     }
   }

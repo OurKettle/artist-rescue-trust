@@ -7,10 +7,11 @@ import TOS from "../components/TermsOfService"
 
 const IndexPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
+  const image = data.socialImage.fluid
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Terms of Service" />
+      <SEO title="Terms of Service" image={image} />
       <TOS></TOS>
     </Layout>
   )
@@ -21,6 +22,11 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    socialImage: datoCmsAsset(filename: { eq: "social-card.jpg" }) {
+      fluid {
+        ...GatsbyDatoCmsFluid
       }
     }
   }

@@ -9,10 +9,11 @@ import Resources from "../components/Resources"
 
 const IndexPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
+  const image = data.socialImage.fluid
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Resources" />
+      <SEO title="Resources" image={image} />
       <Resources />
     </Layout>
   )
@@ -23,6 +24,11 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    socialImage: datoCmsAsset(filename: { eq: "social-card.jpg" }) {
+      fluid {
+        ...GatsbyDatoCmsFluid
       }
     }
   }

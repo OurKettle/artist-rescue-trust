@@ -7,10 +7,11 @@ import PrivacyPolicy from "../components/PrivacyPolicy"
 
 const IndexPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
+  const image = data.socialImage.fluid
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Privacy Policy" />
+      <SEO title="Privacy Policy" image={image} />
       <PrivacyPolicy></PrivacyPolicy>
     </Layout>
   )
@@ -21,6 +22,11 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    socialImage: datoCmsAsset(filename: { eq: "social-card.jpg" }) {
+      fluid {
+        ...GatsbyDatoCmsFluid
       }
     }
   }

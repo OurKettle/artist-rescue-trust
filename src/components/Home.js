@@ -22,9 +22,6 @@ const HomePage = () => {
         const h3 = data.homeImages.images[2]
         const h4 = data.homeImages.images[3]
         const h5 = data.homeImages.images[4]
-
-        console.log(data.homeImages.images)
-
         const home = data.home
         const quote1 = data.home.quotes[0]
         const quote2 = data.home.quotes[1]

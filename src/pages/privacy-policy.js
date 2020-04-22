@@ -11,7 +11,7 @@ const IndexPage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Privacy Policy" image={image} />
+      <SEO title="Privacy Policy - Artist Rescue Trust" image={image} />
       <PrivacyPolicy></PrivacyPolicy>
     </Layout>
   )

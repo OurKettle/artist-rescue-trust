@@ -12,7 +12,10 @@ const IndexPage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Home" image={image} />
+      <SEO
+        title="Artist Rescue Trust – COVID-19 Relief for Artists"
+        image={image}
+      />
       <Home />
     </Layout>
   )

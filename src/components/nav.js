@@ -159,6 +159,14 @@ export const FooterNav = () => {
       >
         Get Help
       </Link>
+      <Link
+        to="/resources"
+        id="resources"
+        className="menu-item"
+        activeClassName="active"
+      >
+        Resources
+      </Link>
     </StyledFooterNav>
   )
 }

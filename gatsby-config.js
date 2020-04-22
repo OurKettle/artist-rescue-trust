@@ -17,8 +17,16 @@ module.exports = {
 
   siteMetadata: {
     title: `Artist Rescue Trust`,
+    author: `Artist Rescue Trust`,
     description: `Crisis brings out our human nature. Generosity, compassion and care. Donate to help people in need during COVID19, or sign up for financial assistance due to COVID19.`,
     siteUrl: `https://artist-rescue-trust.netlify.com/`,
+    social: {
+      twitter: `@artist_rescue`,
+      instagram: `@artistrescuetrust`,
+      facebook: `@artistrescuetrust`,
+      linkedin: `artistrescuetrust`,
+      tiktok: `@artistrescuetrust`
+    },
   },
 
   plugins: [
@@ -67,6 +75,18 @@ module.exports = {
         typekit: {
           id: "wdm1vwz",
         },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-load-script",
+      options: {
+        src: "https://services.cognitoforms.com/f/bbN8iw1MJUqjPe6aHn-_rw?id=71",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

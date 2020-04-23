@@ -8,10 +8,6 @@ export const StyledGrid = styled.div`
   justify-content: center;
   margin: 64px 0;
 
-  @media ${device.desktop} {
-    margin-top: 152px;
-  }
-
   .box {
     padding: 20px;
     margin-bottom: 30px;

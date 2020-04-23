@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 
 import { StyledHero } from "../styles/StyledHero"
 
-const Hero = () => {
+const Hero = ({ data, location }) => {
   return (
     <StaticQuery
       query={heroQuery}
@@ -14,38 +14,66 @@ const Hero = () => {
         const buttons = data.home.heroButtonCta
 
         return (
-          <StyledHero>
-            <Img
-              className="hero-bg-image"
-              fluid={hero.image.fluid}
-              duration={1000}
-              alt="Hero Image"
-            />
-            <div className="hero-content-wrapper">
-              <div className="hero-content">
-                <h1 className="heading">
-                  {hero.heroHeading} <br />
-                </h1>
-                <span className="highlight">{hero.heroHeadingHighlight}</span>{" "}
-                <h5 className="sub-heading">{hero.heroSubHeading}</h5>
-                <div className="button-group">
-                  {buttons.map(button => (
-                    <div key={button.id} className="button-cta">
-                      <a
-                        className="button text"
-                        {...(button.buttonText === "Give Help"
-                          ? { href: "/give-help" }
-                          : { href: "/get-help" })}
-                      >
-                        {button.buttonText}
-                      </a>
-                      <div className="subtext">{button.subtext}</div>
+          <>
+            {location.pathname.includes("get-help") ||
+            location.pathname.includes("give-help") ? (
+              <>
+                <StyledHero className="alt">
+                  <Img
+                    className="hero-bg-image"
+                    fluid={hero.image.fluid}
+                    duration={1000}
+                    alt="Hero Image"
+                  />
+                  <div className="hero-content-wrapper">
+                    <div className="hero-content alt">
+                      <h1 className="heading alt">
+                        {hero.heroHeading} <br />
+                      </h1>
+                      <h5 className="sub-heading alt">{hero.heroSubHeading}</h5>
                     </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </StyledHero>
+                  </div>
+                </StyledHero>
+              </>
+            ) : (
+              <>
+                <StyledHero>
+                  <Img
+                    className="hero-bg-image"
+                    fluid={hero.image.fluid}
+                    duration={1000}
+                    alt="Hero Image"
+                  />
+                  <div className="hero-content-wrapper">
+                    <div className="hero-content">
+                      <h1 className="heading">
+                        {hero.heroHeading} <br />
+                      </h1>
+                      <span className="highlight">
+                        {hero.heroHeadingHighlight}
+                      </span>{" "}
+                      <h5 className="sub-heading">{hero.heroSubHeading}</h5>
+                      <div className="button-group">
+                        {buttons.map(button => (
+                          <div key={button.id} className="button-cta">
+                            <a
+                              className="button text"
+                              {...(button.buttonText === "Give Help"
+                                ? { href: "/give-help" }
+                                : { href: "/get-help" })}
+                            >
+                              {button.buttonText}
+                            </a>
+                            <div className="subtext">{button.subtext}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </StyledHero>
+              </>
+            )}
+          </>
         )
       }}
     />

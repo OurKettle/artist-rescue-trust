@@ -51,12 +51,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-typography`,
-    //   options: {
-    //     pathToConfigModule: `src/utils/typography`,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -77,12 +71,6 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-load-script",
-    //   options: {
-    //     src: "https://services.cognitoforms.com/f/bbN8iw1MJUqjPe6aHn-_rw?id=71",
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

@@ -41,7 +41,7 @@ const Layout = ({ location, children }) => {
                 </div>
               </Header>
               <main>
-                <Hero></Hero>
+                <Hero location={location}></Hero>
                 {children}
               </main>
             </div>

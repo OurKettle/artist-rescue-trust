@@ -14,210 +14,260 @@ import {
 } from "./Mixins"
 
 export const StyledHero = styled.div`
-  position: relative;
-  height: 1020px;
-  background-color: ${theme.black};
+         position: relative;
+         height: 1020px;
+         background-color: ${theme.black};
 
-  @media ${device.mobileUp} {
-    height: 830px;
-  }
+         @media ${device.mobileUp} {
+           height: 830px;
+         }
 
-  @media ${device.tablet} {
-    height: 800px;
-  }
+         @media ${device.tablet} {
+           height: 800px;
+         }
 
-  @media ${device.laptop} {
-    height: 750px;
-  }
+         @media ${device.laptop} {
+           height: 750px;
+         }
 
-  @media ${device.desktop} {
-    height: 877px;
-  }
+         @media ${device.desktop} {
+           height: 877px;
+         }
 
-  .hero-bg-image {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 80%;
+         &.alt {
+           height: 970px;
 
-    @media ${device.tablet} {
-      height: 70%;
-    }
+           @media ${device.mobileUp} {
+             height: 740px;
+           }
 
-    @media ${device.laptop} {
-    }
+           @media ${device.tablet} {
+             height: 590px;
+           }
 
-    @media ${device.desktop} {
-      height: 100%;
-    }
-  }
+           @media ${device.laptop} {
+             height: 580px;
+           }
 
-  .hero-content-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+           @media ${device.desktop} {
+             height: 537px;
+           }
+         }
 
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;
-    text-align: center;
-    color: ${theme.white};
-    padding: 10px 0;
-    transition: all 0.3s ease-out;
+         .hero-bg-image {
+           position: absolute;
+           left: 0;
+           top: 0;
+           width: 100%;
+           height: 80%;
 
-    @media ${device.mobileUp} {
-      padding: 64px 0;
-      margin: auto;
-    }
+           @media ${device.tablet} {
+             height: 70%;
+           }
 
-    @media ${device.tablet} {
-      padding: 149px 50px;
-      margin: auto;
-    }
+           @media ${device.laptop} {
+           }
 
-    @media ${device.laptop} {
-      padding: 70px 0 0 0;
-      width: 900px;
-      margin: auto;
-    }
+           @media ${device.desktop} {
+             height: 100%;
+           }
+         }
 
-    @media ${device.desktop} {
-      width: 1330px;
-    }
+         .hero-content-wrapper {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+         }
 
-    h1,
-    h5 {
-      color: ${theme.white};
-      line-height: 1.5;
-    }
+         .hero-content {
+           display: flex;
+           flex-direction: column;
+           justify-content: flex-start;
+           height: 100%;
+           text-align: center;
+           color: ${theme.white};
+           padding: 10px 0;
+           transition: all 0.3s ease-out;
 
-    .heading {
-      font-size: 1.5rem;
-      ${NimbusBold}
-      padding: 0 35px;
-      letter-spacing: 1px;
+           @media ${device.mobileUp} {
+             padding: 64px 0;
+             margin: auto;
+           }
 
-      @media ${device.desktop} {
-        font-size: 3.5rem;
-        padding: 0 200px;
-      }
-    }
+           @media ${device.tablet} {
+             padding: 149px 50px;
+             margin: auto;
+           }
 
-    .highlight {
-      background: ${theme.white};
-      color: ${theme.black};
-      ${NimbusBold}
-      font-size: 1.5rem;
-      width: 80%;
-      margin: 0 auto 37px;
-      padding: 3px 10px 6px;
-      letter-spacing: 1px;
+           @media ${device.laptop} {
+             padding: 70px 0 0 0;
+             width: 900px;
+             margin: auto;
+           }
 
-      @media ${device.laptop} {
-        width: 50%;
-      }
+           @media ${device.desktop} {
+             width: 1330px;
+           }
 
-      @media ${device.desktop} {
-        width: 75%;
-        margin: 0 auto 37px;
-        font-size: 3.5rem;
-      }
-    }
+           &.alt {
+             @media ${device.mobileUp} {
+               padding-top: 0;
+             }
 
-    .sub-heading {
-      ${Nimbus}
-      font-size: 1.1rem;
-      padding: 0 70px;
+             @media ${device.laptop} {
+               padding-top: 60px;
+             }
 
-      @media ${device.desktop} {
-        font-size: 1.6rem;
-        padding: 0 275px;
-        margin: 0;
-      }
-    }
+             @media ${device.desktop} {
+               padding-top: 30px;
+             }
+           }
 
-    .button-group {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
+           h1,
+           h5 {
+             color: ${theme.white};
+             line-height: 1.5;
+           }
 
-      @media ${device.tabletUp} {
-        flex-direction: row;
-        margin-top: 80px;
-      }
+           .heading {
+             font-size: 1.5rem;
+             ${NimbusBold}
+             padding: 0 35px;
+             letter-spacing: 1px;
 
-      .button-cta {
-        width: 287px;
-        margin-bottom: 30px;
+             @media ${device.desktop} {
+               font-size: 3.5rem;
+               padding: 0 200px;
+             }
 
-        a {
-          color: ${theme.black};
-          text-transform: uppercase;
-        }
+             &.alt {
+               font-size: 2.2rem;
 
-        .button {
-          display: block;
-          width: 100%;
-          ${Benton};
-          font-size: 2.5rem;
-          letter-spacing: 1.5px;
-          padding: 10px 0;
-          margin-bottom: 20px;
-          border: 0;
+               @media ${device.mobileUp} {
+                 font-size: 2.9rem;
+               }
 
-          &:hover {
-            cursor: pointer;
-          }
-        }
+               @media ${device.desktop} {
+                 font-size: 3.5rem;
+               }
+             }
+           }
 
-        &:first-of-type {
-          .button {
-            ${blueGradient};
-            ${buttonHover};
+           .highlight {
+             background: ${theme.white};
+             color: ${theme.black};
+             ${NimbusBold}
+             font-size: 1.5rem;
+             width: 80%;
+             margin: 0 auto 37px;
+             padding: 3px 10px 6px;
+             letter-spacing: 1px;
 
-            &:before {
-              ${buttonHoverBefore};
-              ${blueGradientReverse};
-            }
+             @media ${device.laptop} {
+               width: 50%;
+             }
 
-            &:hover {
-              &:before {
-                opacity: 1;
-              }
-            }
-          }
-        }
+             @media ${device.desktop} {
+               width: 75%;
+               margin: 0 auto 37px;
+               font-size: 3.5rem;
+             }
+           }
 
-        &:last-of-type {
-          .button {
-            ${buttonHover};
-            ${pinkGradient};
+           .sub-heading {
+             ${Nimbus}
+             font-size: 1.1rem;
+             padding: 0 70px;
 
-            &:before {
-              ${pinkGradientReverse};
-              ${buttonHoverBefore};
-            }
+             @media ${device.desktop} {
+               font-size: 1.6rem;
+               padding: 0 275px;
+               margin: 0;
+             }
 
-            &:hover {
-              &:before {
-                opacity: 1;
-              }
-            }
-          }
-        }
+             &.alt {
+               font-size: 1.4rem;
+             }
+           }
 
-        .subtext {
-          ${Nimbus}
-          padding: 0 20px;
-        }
-      }
-    }
-  }
-`
+           .button-group {
+             display: flex;
+             flex-direction: column;
+             justify-content: space-evenly;
+             align-items: center;
+
+             @media ${device.tabletUp} {
+               flex-direction: row;
+               margin-top: 80px;
+             }
+
+             .button-cta {
+               width: 287px;
+               margin-bottom: 30px;
+
+               a {
+                 color: ${theme.black};
+                 text-transform: uppercase;
+               }
+
+               .button {
+                 display: block;
+                 width: 100%;
+                 ${Benton};
+                 font-size: 2.5rem;
+                 letter-spacing: 1.5px;
+                 padding: 10px 0;
+                 margin-bottom: 20px;
+                 border: 0;
+
+                 &:hover {
+                   cursor: pointer;
+                 }
+               }
+
+               &:first-of-type {
+                 .button {
+                   ${blueGradient};
+                   ${buttonHover};
+
+                   &:before {
+                     ${buttonHoverBefore};
+                     ${blueGradientReverse};
+                   }
+
+                   &:hover {
+                     &:before {
+                       opacity: 1;
+                     }
+                   }
+                 }
+               }
+
+               &:last-of-type {
+                 .button {
+                   ${buttonHover};
+                   ${pinkGradient};
+
+                   &:before {
+                     ${pinkGradientReverse};
+                     ${buttonHoverBefore};
+                   }
+
+                   &:hover {
+                     &:before {
+                       opacity: 1;
+                     }
+                   }
+                 }
+               }
+
+               .subtext {
+                 ${Nimbus}
+                 padding: 0 20px;
+               }
+             }
+           }
+         }
+       `

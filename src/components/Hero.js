@@ -15,8 +15,7 @@ const Hero = ({ data, location }) => {
 
         return (
           <>
-            {location.pathname.includes("get-help") ||
-            location.pathname.includes("give-help") ? (
+            {location.pathname === "/get-help" || location.pathname === "/give-help" ? (
               <>
                 <StyledHero className="alt">
                   <Img

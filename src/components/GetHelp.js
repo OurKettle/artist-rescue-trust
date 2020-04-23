@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 // Gatsby
 import { StaticQuery, graphql } from "gatsby"
@@ -8,19 +8,37 @@ import { HelmetDatoCms } from "gatsby-source-datocms"
 import { StyledGrid } from "../styles/StyledGrid"
 
 const GetHelp = () => {
+  
+  useEffect(() => {
+    const script = document.createElement("script")
+    script.src = "https://services.cognitoforms.com/s/bbN8iw1MJUqjPe6aHn-_rw"
+    document.body.appendChild(script)
+    script.addEventListener("load", () => {
+      console.log("loaded");
+    })
+  }, [])
+
+  // useEffect(() => {
+  //   try {
+  //     Cognito.load("forms", { id: "71" });
+  //     // Cognito.setCss(
+  //     //   ".cognito button {border-radius: 0 !important;text-transform: uppercase !important background-color: red !important;}"
+  //     // );
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }, [])
+
   return (
     <StaticQuery
       query={getHelpQuery}
       render={data => {
-        const getHelp = data.getHelp
         const contentBlock1 = data.getHelp.contentBlocks[0]
         const contentBlock2 = data.getHelp.contentBlocks[1]
 
         return (
           <StyledGrid className="main-content">
-            <HelmetDatoCms>
-              <script src="https://services.cognitoforms.com/scripts/embed.js"></script>
-            </HelmetDatoCms>
+            <HelmetDatoCms></HelmetDatoCms>
             <div className="box a">
               <h1 className="heading">{contentBlock1.heading}</h1>
               <div
@@ -40,11 +58,7 @@ const GetHelp = () => {
             </div>
 
             <div className="box c">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: getHelp.cognitoFormEmbedNode.childMarkdownRemark.html,
-                }}
-              />
+              <div className="cognito"></div>
             </div>
           </StyledGrid>
         )

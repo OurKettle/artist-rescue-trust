@@ -121,4 +121,25 @@ ul li {
       max-width: 100% !important;
     } */
   }
+
+  .cognito .c-forms-form {
+
+    .c-button:not(.c-save-resume-button),
+    .c-save-resume-button:not(.c-icon-button) {
+      ${Benton};
+      font-size: 1.2rem;
+      letter-spacing: 1.5px;
+      border-radius: 0;
+      text-transform: uppercase;
+      padding: 15px 30px 12px;
+    }
+
+    .c-save-resume-button:not(.c-icon-button) {
+      border: 1px solid ${theme.darkPurple};
+    }
+
+    .c-button:not(.c-save-resume-button) {
+      background-color: ${theme.darkPurple};
+    }
+  }
 `

@@ -8,26 +8,14 @@ import { HelmetDatoCms } from "gatsby-source-datocms"
 import { StyledGrid } from "../styles/StyledGrid"
 
 const GetHelp = () => {
-  
   useEffect(() => {
     const script = document.createElement("script")
     script.src = "https://services.cognitoforms.com/s/bbN8iw1MJUqjPe6aHn-_rw"
     document.body.appendChild(script)
     script.addEventListener("load", () => {
-      console.log("loaded");
+      window.Cognito.load("forms", { id: "71" })
     })
   }, [])
-
-  // useEffect(() => {
-  //   try {
-  //     Cognito.load("forms", { id: "71" });
-  //     // Cognito.setCss(
-  //     //   ".cognito button {border-radius: 0 !important;text-transform: uppercase !important background-color: red !important;}"
-  //     // );
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }, [])
 
   return (
     <StaticQuery

@@ -129,6 +129,10 @@ export const StyledHome = styled.div`
       margin-top: -500px;
     }
 
+    @media (min-width: 1186px) and (max-width: 1369px) {
+      margin-top: -270px;
+    }
+
     @media ${device.desktop} {
       order: 2;
       margin-top: -300px;

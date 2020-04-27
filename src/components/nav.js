@@ -12,6 +12,7 @@ import {
   StyledNav,
   StyledMobileNav,
   StyledFooterNav,
+  StyledSocialNav,
 } from "../styles/StyledNav"
 
 export const Nav = ({ location }) => {
@@ -173,5 +174,33 @@ export const FooterNav = () => {
         Get Help
       </Link>
     </StyledFooterNav>
+  )
+}
+
+export const SocialNav = () => {
+  return (
+    <StyledSocialNav>
+      <a
+        href="https://www.instagram.com/artistrescuetrust/"
+        className="instagram"
+      >
+        <i class="fab fa-instagram-square"></i>
+      </a>
+      <a href="https://twitter.com/artist_rescue" className="twitter">
+        <i class="fab fa-twitter-square"></i>
+      </a>
+      <a
+        href="https://www.facebook.com/artistrescuetrust/"
+        className="facebook"
+      >
+        <i class="fab fa-facebook-square"></i>
+      </a>
+      <a
+        href="https://www.linkedin.com/company/artistrescuetrust/"
+        className="linkedin"
+      >
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </StyledSocialNav>
   )
 }

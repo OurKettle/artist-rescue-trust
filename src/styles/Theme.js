@@ -10,7 +10,11 @@ export const theme = {
   pink: "#F582C9",
   lightTeal: "#82ECF5",
   darkTeal: "#7BCFDF",
-  
-  link: "#FED330",
-}
 
+  link: "#FED330",
+
+  instagram: "#C90085",
+  facebook: "#4267B2",
+  twitter: "#5EAADE",
+  linkedin: "#0077B5",
+}

@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 // Components
-import { MobileNav, Nav, FooterNav } from "./nav"
+import { MobileNav, Nav, FooterNav, SocialNav } from "./nav"
 import Hero from "../components/Hero"
 
 // Styles
@@ -52,7 +52,8 @@ const Layout = ({ location, children }) => {
                 duration={1000}
                 alt="ART Logo"
               />
-              <FooterNav></FooterNav>
+                <FooterNav></FooterNav>
+                <SocialNav></SocialNav>
             </Footer>
           </Wrapper>
           </>

@@ -215,6 +215,7 @@ export const StyledFooterNav = styled.nav`
   width: 100%;
   transition: all 0.3s ease-out;
   font-size: 0.9rem;
+  margin-bottom: 35px;
 
   @media ${device.mobileLUp} {
     flex-direction: row;
@@ -230,5 +231,41 @@ export const StyledFooterNav = styled.nav`
     letter-spacing: 1.5px;
     color: ${theme.white};
     padding: 20px 0;
+  }
+`
+
+export const StyledSocialNav = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  transition: all 0.3s ease-out;
+  font-size: 2.5rem;
+
+  /* @media ${device.tabletUp} {
+    width: 700px;
+  } */
+
+  a {
+    color: ${theme.white};
+    padding: 20px 0;
+    transition: color .25s ease-out;
+      
+      &.instagram:hover {
+        color: ${theme.instagram};
+      }
+
+      &.twitter:hover {
+        color: ${theme.twitter};
+      }
+
+      &.facebook:hover {
+        color: ${theme.facebook};
+      }
+
+      &.linkedin:hover {
+        color: ${theme.linkedin};
+      }
   }
 `

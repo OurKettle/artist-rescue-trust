@@ -59,11 +59,11 @@ export const StyledHome = styled.div`
       }
 
       :nth-child(2) img {
-        margin-top: 15px;
+        margin-top: 5px;
       }
 
       :last-of-type img {
-        margin-top: 22px;
+        margin-top: 25px;
       }
 
       img {

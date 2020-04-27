@@ -182,22 +182,22 @@ export const SocialNav = () => {
     <StyledSocialNav>
       <a
         href="https://www.instagram.com/artistrescuetrust/"
-        className="instagram"
+        className="instagram" target="_blank" rel="noopener"
       >
         <i class="fab fa-instagram-square"></i>
       </a>
-      <a href="https://twitter.com/artist_rescue" className="twitter">
+      <a href="https://twitter.com/artist_rescue" className="twitter" target="_blank>" rel="noopener">
         <i class="fab fa-twitter-square"></i>
       </a>
       <a
         href="https://www.facebook.com/artistrescuetrust/"
-        className="facebook"
+        className="facebook" target="_blank" rel="noopener"
       >
         <i class="fab fa-facebook-square"></i>
       </a>
       <a
         href="https://www.linkedin.com/company/artistrescuetrust/"
-        className="linkedin"
+        className="linkedin" target="_blank" rel="noopener"
       >
         <i class="fab fa-linkedin"></i>
       </a>

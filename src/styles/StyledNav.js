@@ -21,7 +21,7 @@ export const StyledNav = styled.nav`
 
   a {
     position: relative;
-    color: ${theme.black};
+    color: ${theme.white};
     ${Benton}
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -132,6 +132,7 @@ export const StyledMobileNav = styled.div`
       margin: 0;
       position: relative;
       top: -5px;
+      color: ${theme.white};
     }
 
     button {

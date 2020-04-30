@@ -20,42 +20,47 @@ const Layout = ({ location, children }) => {
         const logo = data.logo
         return (
           <>
-          <GlobalStyle /> 
-          <Wrapper>
-            <HelmetDatoCms>
-              <script
-                src="https://kit.fontawesome.com/856c74694a.js"
-                crossorigin="anonymous"
-              ></script>
-            </HelmetDatoCms>
-            <MobileNav location={location.pathname} />
-            <div className="app">
-              <Header>
-                <div className="header-left">
-                  <Link to={`/`}>
-                    <div className="logo"></div>
-                  </Link>
-                </div>
-                <div className="header-right">
-                  <Nav location={location.pathname} />
-                </div>
-              </Header>
-              <main>
+            <GlobalStyle />
+            <Wrapper>
+              <HelmetDatoCms>
+                <script
+                  src="https://kit.fontawesome.com/856c74694a.js"
+                  crossorigin="anonymous"
+                ></script>
+              </HelmetDatoCms>
+              <MobileNav location={location.pathname} />
+              <div className="app">
+                <Header>
+                  <div className="header-left">
+                    <Link to={`/`}>
+                      <div className="logo"></div>
+                    </Link>
+                  </div>
+                  <div className="header-right">
+                    <Nav location={location.pathname} />
+                  </div>
+                </Header>
+                <main>
+                  {location.pathname === "/" ? (
+                    <Hero location={location}></Hero>
+                  ) : null}
+                  {children}
+                </main>
+              </div>
+              {location.pathname === "/" ? null : (
                 <Hero location={location}></Hero>
-                {children}
-              </main>
-            </div>
-            <Footer>
-              <Img
-                className="logo"
-                fluid={logo.fluid}
-                duration={1000}
-                alt="ART Logo"
-              />
+              )}
+              <Footer>
+                <Img
+                  className="logo"
+                  fluid={logo.fluid}
+                  duration={1000}
+                  alt="ART Logo"
+                />
                 <FooterNav></FooterNav>
                 <SocialNav></SocialNav>
-            </Footer>
-          </Wrapper>
+              </Footer>
+            </Wrapper>
           </>
         )
       }}

@@ -18,6 +18,7 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 100px;
+  background: ${theme.black};
 
   .header-left {
     ${blueGradient}

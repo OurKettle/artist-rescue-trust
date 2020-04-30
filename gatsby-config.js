@@ -25,7 +25,7 @@ module.exports = {
       instagram: `@artistrescuetrust`,
       facebook: `@artistrescuetrust`,
       linkedin: `artistrescuetrust`,
-      tiktok: `@artistrescuetrust`
+      tiktok: `@artistrescuetrust`,
     },
   },
 
@@ -74,7 +74,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
+        trackingId: "UA-165006536-1",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

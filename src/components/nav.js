@@ -21,14 +21,13 @@ export const Nav = ({ location }) => {
       <Link to="/" id="home" className="menu-item" activeClassName="active">
         Home
       </Link>
-      <Link
-        to="#aboutSection"
+      <a
+        href="/#aboutSection"
         id="about"
         className="menu-item"
-        activeClassName="active"
       >
         About
-      </Link>
+      </a>
       <Link
         to="/how-it-works"
         id="how-it-works"
@@ -85,14 +84,13 @@ export const MobileNav = ({ location }) => {
         <Link to="/" id="home" className="menu-item" activeClassName="active">
           Home
         </Link>
-        <Link
-          to="#aboutSection"
+        <a
+          href="/#aboutSection"
           id="about"
           className="menu-item"
-          activeClassName="active"
         >
           About
-        </Link>
+        </a>
         <Link
           to="/how-it-works"
           id="how-it-works"
@@ -186,7 +184,7 @@ export const SocialNav = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <i class="fab fa-instagram-square"></i>
+        <i className="fab fa-instagram-square"></i>
       </a>
       <a
         href="https://twitter.com/artist_rescue"
@@ -194,7 +192,7 @@ export const SocialNav = () => {
         target="_blank>"
         rel="noopener noreferrer"
       >
-        <i class="fab fa-twitter-square"></i>
+        <i className="fab fa-twitter-square"></i>
       </a>
       <a
         href="https://www.facebook.com/artistrescuetrust/"
@@ -202,7 +200,7 @@ export const SocialNav = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <i class="fab fa-facebook-square"></i>
+        <i className="fab fa-facebook-square"></i>
       </a>
       <a
         href="https://www.linkedin.com/company/artistrescuetrust/"
@@ -210,7 +208,7 @@ export const SocialNav = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <i class="fab fa-linkedin"></i>
+        <i className="fab fa-linkedin"></i>
       </a>
     </StyledSocialNav>
   )

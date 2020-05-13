@@ -48,7 +48,7 @@ export const GlobalStyle = createGlobalStyle`
 
       &.intro {
       font-weight: 700;
-      margin-bottom: 50px; 
+      margin-bottom: 50px;
 
       &.small {
         width: 100%;
@@ -68,7 +68,7 @@ export const GlobalStyle = createGlobalStyle`
     @media ${device.tablet} {
       width: 279px;
     }
-    
+
     p {
       font-size: 1.1rem;
       margin-bottom: 40px;
@@ -141,5 +141,10 @@ ul li {
     .c-button:not(.c-save-resume-button) {
       background-color: ${theme.darkPurple};
     }
+  }
+
+  .d-flex {
+    display: flex;
+    flex-direction: column;
   }
 `

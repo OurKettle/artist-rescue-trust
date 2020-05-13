@@ -6,12 +6,19 @@ import { StaticQuery, graphql } from "gatsby"
 // Styles
 import { StyledGrid } from "../styles/StyledGrid"
 
+// Stripe
+import { Elements } from "@stripe/react-stripe-js"
+import { loadStripe } from "@stripe/stripe-js"
+import StripeForm from "./StripeForm"
+import { StyledStripeForm } from "../styles/StyledStripeForm"
+
+const stripePromise = loadStripe("pk_test_kfhmKZBuex2hxS8FQ6t0xoTe003Xv8kQzG")
+
 const GiveHelp = () => {
   return (
     <StaticQuery
       query={giveHelpQuery}
       render={data => {
-        const giveHelp = data.giveHelp
         const contentBlock1 = data.giveHelp.contentBlocks[0]
 
         return (
@@ -26,11 +33,11 @@ const GiveHelp = () => {
             </div>
 
             <div className="box b">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: giveHelp.donorboxEmbedNode.childMarkdownRemark.html,
-                }}
-              />
+              <StyledStripeForm>
+                <Elements stripe={stripePromise}>
+                  <StripeForm />
+                </Elements>
+              </StyledStripeForm>
             </div>
 
             <div className="bix c">

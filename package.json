@@ -5,15 +5,19 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.5.0",
     "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
     "faunadb": "^2.13.1",
+    "formik": "^2.1.4",
     "gatsby": "^2.19.45",
     "gatsby-background-image": "^1.0.1",
     "gatsby-image": "^2.2.44",
     "gatsby-plugin-google-analytics": "^2.2.4",
     "gatsby-plugin-load-script": "^1.1.0",
+    "gatsby-plugin-mailchimp": "^5.1.2",
     "gatsby-plugin-manifest": "^2.2.48",
     "gatsby-plugin-offline": "^3.0.41",
     "gatsby-plugin-react-helmet": "^3.1.24",
@@ -35,7 +39,8 @@
     "react-typography": "^0.16.19",
     "styled-components": "^5.0.1",
     "typography": "^0.16.19",
-    "typography-theme-grand-view": "^0.16.19"
+    "typography-theme-grand-view": "^0.16.19",
+    "yup": "^0.28.5"
   },
   "devDependencies": {
     "http-proxy-middleware": "^1.0.3",

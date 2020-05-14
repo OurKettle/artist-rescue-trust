@@ -1,33 +1,31 @@
-exports.handler = function(event, context, callback) {
-  const express = require("express")
-  const app = express()
-  const { resolve } = require("path")
-
+exports.handler = async (event, context, callback) => {
   const stripe = require("stripe")("sk_test_YZbgPmIbm2d52T0CydfgleE700umJEzH0H")
 
-  app.use(express.static("."))
-  app.use(express.json())
+  const calculateOrderAmount = async donationAmount => {
+    // let total = 0
 
-  const calculateOrderAmount = donation => {
-    // Replace this constant with a calculation of the order's amount
-    // Calculate the order total on the server to prevent
-    // people from directly manipulating the amount on the client
-    return 1400
+    // for (let index = 0; index < donationAmount.length; index++) {
+    //   const sku = await stripe.skus.retrieve(donationAmount[index].sku)
+    //   total += sku.price * donationAmount[index].quantity
+    // }
+    return 12
   }
 
-  app.post("/create-payment-intent", async (req, res) => {
-    const { donation } = req.body
-
-    // Create a PaymentIntent with the order amount and currency
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: calculateOrderAmount(donation),
-      currency: "usd",
-    })
-
-    res.send({
-      clientSecret: paymentIntent.client_secret,
-    })
+  const data = JSON.parse(event.body)
+  const donationAmount = data.donationAmount
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: await calculateOrderAmount(donationAmount),
+    currency: "usd",
   })
 
-  app.listen(4242, () => console.log("Node server listening on port 4242!"))
+  return {
+    statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Content-Type",
+    },
+    body: JSON.stringify({
+      clientSecret: paymentIntent.client_secret,
+    }),
+  }
 }

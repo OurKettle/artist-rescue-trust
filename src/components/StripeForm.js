@@ -1,44 +1,66 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import * as Yup from "yup"
 
 export default function CheckoutForm() {
+  const [succeeded, setSucceeded] = useState(false)
+  const [error, setError] = useState(null)
+  const [processing, setProcessing] = useState("")
+  const [disabled, setDisabled] = useState(true)
+  const [clientSecret, setClientSecret] = useState("")
   const stripe = useStripe()
   const elements = useElements()
 
-  const handleSubmit = async event => {
-    // We don't want to let default form submission happen here,
-    // which would refresh the page.
-    event.preventDefault()
+  useEffect(() => {
+    // Create PaymentIntent as soon as the page loads
+    window
+      .fetch("/create-payment-intent", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
+      })
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        setClientSecret(data.clientSecret)
+      })
+  }, [])
+  console.log(clientSecret)
 
-    if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-      return
-    }
+  const handleChange = async event => {
+    // Listen for changes in the CardElement
+    // and display any errors as the customer types their card details
+    setDisabled(event.empty)
+    setError(event.error ? event.error.message : "")
+  }
 
-    const result = await stripe.confirmCardPayment("{CLIENT_SECRET}", {
+  const handleSubmit = async ev => {
+    ev.preventDefault()
+    setProcessing(true)
+
+    const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name: "Jenny Rosen",
+          firstName: ev.target.firstName.value,
+          lastName: ev.target.lastName.value,
+          email: ev.target.email.value,
+          zipCode: ev.target.zipCode.value,
         },
       },
     })
 
-    if (result.error) {
-      // Show error to your customer (e.g., insufficient funds)
-      console.log(result.error.message)
+    if (payload.error) {
+      setError(`Payment failed ${payload.error.message}`)
+      setProcessing(false)
     } else {
-      // The payment has been processed!
-      if (result.paymentIntent.status === "succeeded") {
-        // Show a success message to your customer
-        // There's a risk of the customer closing the window before callback
-        // execution. Set up a webhook or plugin to listen for the
-        // payment_intent.succeeded event that handles any business critical
-        // post-payment actions.
-      }
+      setError(null)
+      setProcessing(false)
+      setSucceeded(true)
     }
   }
 
@@ -86,7 +108,8 @@ export default function CheckoutForm() {
         zipCode: "",
       }}
       validationSchema={Yup.object({
-        customAmount: Yup.string().required("Please enter a custom amount"),
+        customAmount: Yup.string(),
+        // .required("Please enter a custom amount"),
         firstName: Yup.string().required("Required"),
         lastName: Yup.string().required("Required"),
         email: Yup.string()
@@ -103,6 +126,7 @@ export default function CheckoutForm() {
           setSubmitting(false)
         }, 400)
       }}
+      // onSubmit={handleSubmit}
     >
       <Form>
         <section className="amount">
@@ -161,6 +185,18 @@ export default function CheckoutForm() {
               )
             })}
           </fieldset>
+          <fieldset>
+            <label htmlFor="donationFee" className="checkbox">
+              <Field
+                name="donationFee"
+                type="checkbox"
+                placeholder="Custom Amount"
+              />
+              <div className="d-flex">
+                <p>Optionally add $$$ to cover processing fee</p>
+              </div>
+            </label>
+          </fieldset>
         </section>
 
         {/* <section className="comment">
@@ -212,29 +248,33 @@ export default function CheckoutForm() {
               </p>
             </label>
           </fieldset>
-          {/* <fieldset>
-            <label className="checkbox">
-              <input
-                name="newsletter"
-                type="checkbox"
-                // checked={}
-                // onChange={handleOptionChange}
-              />
-              <div className="d-flex">
-                <p>Sign up to receive our newsletter.</p>
-              </div>
-            </label>
-          </fieldset> */}
         </section>
 
         <section className="payment">
           <h2>Payment Information</h2>
-          <CardElement />
+          <CardElement id="card-element" onChange={handleChange} />
         </section>
 
-        <button type="submit" disabled={!stripe}>
-          Submit
+        <button disabled={processing || disabled || succeeded} id="submit">
+          <span id="button-text">
+            {processing ? <div className="spinner" id="spinner"></div> : "Pay"}
+          </span>
         </button>
+        {/* Show any error that happens when processing the payment */}
+        {error && (
+          <div className="card-error" role="alert">
+            {error}
+          </div>
+        )}
+        {/* Show a success message upon completion */}
+        <p className={succeeded ? "result-message" : "result-message hidden"}>
+          Payment succeeded, see the result in your
+          <a href={`https://dashboard.stripe.com/test/payments`}>
+            {" "}
+            Stripe dashboard.
+          </a>{" "}
+          Refresh the page to pay again.
+        </p>
       </Form>
     </Formik>
   )

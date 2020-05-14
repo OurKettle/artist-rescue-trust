@@ -27,6 +27,13 @@ export const StyledStripeForm = styled.div`
     h2 {
       margin-bottom: 35px;
     }
+
+    &.payment {
+      padding-bottom: 40px;
+      label {
+        width: 100%;
+      }
+    }
   }
 
   fieldset {
@@ -133,6 +140,13 @@ export const StyledStripeForm = styled.div`
     outline: 0;
     border-radius: 4px;
     background: white;
+
+          ${Nimbus};
+      font-size: 1rem;
+      width: 100%;
+      margin: 0;
+      padding: 10px 20px;
+      width: 100%;
   }
 
   input::placeholder {
@@ -184,6 +198,74 @@ export const StyledStripeForm = styled.div`
       background-color: #7795f8;
       transform: translateY(-1px);
       box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+
+  .spinner,
+  .spinner:before,
+  .spinner:after {
+    border-radius: 50%;
+  }
+
+  .spinner {
+    color: #ffffff;
+    font-size: 22px;
+    text-indent: -99999px;
+    margin: 0px auto;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    box-shadow: inset 0 0 0 2px;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  .spinner:before,
+  .spinner:after {
+    position: absolute;
+    content: "";
+  }
+
+  .spinner:before {
+    width: 10.4px;
+    height: 20.4px;
+    background: #5469d4;
+    border-radius: 20.4px 0 0 20.4px;
+    top: -0.2px;
+    left: -0.2px;
+    -webkit-transform-origin: 10.4px 10.2px;
+    transform-origin: 10.4px 10.2px;
+    -webkit-animation: loading 2s infinite ease 1.5s;
+    animation: loading 2s infinite ease 1.5s;
+  }
+
+  .spinner:after {
+    width: 10.4px;
+    height: 10.2px;
+    background: #5469d4;
+    border-radius: 0 10.2px 10.2px 0;
+    top: -0.1px;
+    left: 10.2px;
+    -webkit-transform-origin: 0px 10.2px;
+    transform-origin: 0px 10.2px;
+    -webkit-animation: loading 2s infinite ease;
+    animation: loading 2s infinite ease;
+  }
+
+  @keyframes loading {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
   }
 `

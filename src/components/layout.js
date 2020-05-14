@@ -27,6 +27,7 @@ const Layout = ({ location, children }) => {
                   src="https://kit.fontawesome.com/856c74694a.js"
                   crossorigin="anonymous"
                 ></script>
+                <script src="https://js.stripe.com/v3/"></script>
               </HelmetDatoCms>
               <MobileNav location={location.pathname} />
               <div className="app">

@@ -1,12 +1,7 @@
 import React from "react"
-
-// Gatsby
 import { StaticQuery, graphql } from "gatsby"
-
-// Styles
 import { StyledGrid } from "../styles/StyledGrid"
 
-// Stripe
 import { Elements } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js"
 import StripeForm from "./StripeForm"

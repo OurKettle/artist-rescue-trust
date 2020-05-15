@@ -54,6 +54,7 @@ export default function CheckoutForm() {
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({donationAmount: 1200})
       })
       .then(response => response.json())
       .then(data => {

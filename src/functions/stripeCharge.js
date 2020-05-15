@@ -8,7 +8,7 @@ exports.handler = async (event, context, callback) => {
     //   const sku = await stripe.skus.retrieve(donationAmount[index].sku)
     //   total += sku.price * donationAmount[index].quantity
     // }
-    return 12
+    return donationAmount
   }
 
   const data = JSON.parse(event.body)

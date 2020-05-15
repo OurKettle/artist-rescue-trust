@@ -3,7 +3,7 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js"
 // import { Formik, Field, Form, ErrorMessage } from "formik"
 // import * as Yup from "yup"
 
-export default function CheckoutForm() {
+export default function StripeForm() {
   const stripe = useStripe()
   const elements = useElements()
   const [succeeded, setSucceeded] = useState(false)
@@ -73,16 +73,12 @@ export default function CheckoutForm() {
   const handleSubmit = async ev => {
     ev.preventDefault()
     setProcessing(true)
-
+    
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
-        // billing_details: {
-        //   firstName: ev.target.firstName.value,
-        //   lastName: ev.target.lastName.value,
-        //   email: ev.target.email.value,
-        //   zipCode: ev.target.zipCode.value,
-        // },
+        billing_details: {
+        },
       },
     })
 
@@ -97,7 +93,7 @@ export default function CheckoutForm() {
   }
 
   return (
-    <form action={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <section className="payment">
         <h2>Payment Information</h2>
         <CardElement id="card-element" onChange={handleChange} />

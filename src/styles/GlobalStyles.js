@@ -149,6 +149,6 @@ ul li {
   }
 
   .hidden {
-    display: none;
+    display: none !important;
   }
 `

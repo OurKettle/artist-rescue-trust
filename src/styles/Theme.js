@@ -3,8 +3,10 @@ export const theme = {
   offWhite: "#F7F9F5",
   black: "#0E0907",
   gray: "#707070",
+  lightGray: "rgba(247, 247, 249, 1.000)",
   cream: "#F7F2EC",
-  red: "#BF002A",
+  error: "#BF002A",
+  success: "#0080002e",
 
   lightPurple: "#ADA1CE",
   darkPurple: "#736EE5",

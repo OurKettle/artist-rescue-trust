@@ -46,9 +46,6 @@ export default function StripeForm() {
     },
   ]
 
-  console.log(donationAmount)
-  console.log(firstName)
-
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     window

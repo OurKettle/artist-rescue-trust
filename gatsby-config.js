@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const { createProxyMiddleware } = require("http-proxy-middleware")
 
 module.exports = {
@@ -74,7 +78,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-165006536-1",
+        trackingId: process.env.GOOGLE_TRACKING_ID,
       },
     },
     // {

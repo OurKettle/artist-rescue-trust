@@ -7,7 +7,7 @@ import { loadStripe } from "@stripe/stripe-js"
 import StripeForm from "./StripeForm"
 import { StyledStripeForm } from "../styles/StyledStripeForm"
 
-const stripePromise = loadStripe("pk_test_kfhmKZBuex2hxS8FQ6t0xoTe003Xv8kQzG")
+const stripePromise = loadStripe("process.env.GATSBY_STRIPE_PUBLISHABLE_KEY")
 
 const GiveHelp = () => {
   return (

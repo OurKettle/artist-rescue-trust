@@ -1,5 +1,9 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 exports.handler = async (event, context, callback) => {
-  const stripe = require("stripe")("sk_test_YZbgPmIbm2d52T0CydfgleE700umJEzH0H")
+  const stripe = require("stripe")("process.env.GATSBY_STRIPE_SECRET_KEY")
 
   const calculateOrderAmount = async donationAmount => {
     return donationAmount

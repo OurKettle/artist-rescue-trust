@@ -6,36 +6,37 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js"
 export default function StripeForm() {
   const stripe = useStripe()
   const elements = useElements()
+
   const [succeeded, setSucceeded] = useState(false)
   const [error, setError] = useState(null)
   const [processing, setProcessing] = useState("")
   const [disabled, setDisabled] = useState(true)
   const [clientSecret, setClientSecret] = useState("")
-  const [donationCheck, setDonationCheck] = useState({
+  const [donationAmount, setDonationAmount] = useState({
     activeIndex: -1,
-    selectedOption: "",
+    value: "",
     checked: false,
   })
-
+  const [firstName, setFirstName] = useState("")
   const donationAmounts = [
     {
       label: "50",
-      value: "50",
+      value: "5000",
       text: "Support those in need!",
     },
     {
       label: "100",
-      value: "100",
+      value: "10000",
       text: "Move the needle for an artist",
     },
     {
       label: "500",
-      value: "500",
+      value: "50000",
       text: "Support 1 month for 1 artist",
     },
     {
       label: "1500",
-      value: "1500",
+      value: "150000",
       text: "Support an artist for the full 3 months of support",
     },
     {
@@ -44,6 +45,9 @@ export default function StripeForm() {
       text: "Enter custom amount",
     },
   ]
+
+  console.log(donationAmount)
+  console.log(firstName)
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -54,21 +58,21 @@ export default function StripeForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          donationAmount: 1200,
-          name: "Seth Hall",
+          donationAmount: donationAmount.value,
+          name: firstName,
         }),
       })
       .then(response => response.json())
       .then(data => {
         setClientSecret(data.clientSecret)
       })
-  }, [])
+  }, [donationAmount, firstName])
 
-  const handleChange = async event => {
+  const handleChange = async ev => {
     // Listen for changes in the CardElement
     // and display any errors as the customer types their card details
-    setDisabled(event.empty)
-    setError(event.error ? event.error.message : "")
+    setDisabled(ev.empty)
+    setError(ev.error ? ev.error.message : "")
   }
 
   const handleSubmit = async ev => {
@@ -78,7 +82,6 @@ export default function StripeForm() {
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
-        // amount: ev.target.donationCheck.selectedOption,
         billing_details: {
           name: ev.target.firstName.value + " " + ev.target.lastName.value,
           email: ev.target.email.value,
@@ -103,10 +106,10 @@ export default function StripeForm() {
           <h2>Choose Amount</h2>
           <fieldset className="amount-check">
             {donationAmounts.map((d, index) => {
-              const handleOptionChange = changeEvent => {
-                setDonationCheck({
+              const handleOptionChange = ev => {
+                setDonationAmount({
                   activeIndex: index,
-                  selectedOption: changeEvent.target.value,
+                  value: ev.target.value,
                   checked: true,
                 })
               }
@@ -124,9 +127,10 @@ export default function StripeForm() {
                     return (
                       <>
                         <input
-                          name="customAmount"
+                          name={d.label}
                           type="text"
                           placeholder="Custom Amount"
+                          onChange={handleOptionChange}
                         />
                         <p className="error" style={{ margin: "0" }}>
                           {/* <ErrorMessage name="customAmount" /> */}
@@ -140,16 +144,16 @@ export default function StripeForm() {
                 <label
                   key={index}
                   className={
-                    index === donationCheck.activeIndex
+                    index === donationAmount.activeIndex
                       ? "checkbox active"
                       : "checkbox"
                   }
                 >
                   <input
-                    name={d.name}
+                    name={d.label}
                     value={d.value}
                     type="radio"
-                    checked={donationCheck.selectedOption === d.value}
+                    checked={donationAmount.value === d.value}
                     onChange={handleOptionChange}
                   />
                   <div className="d-flex">{renderSwitch(d.value)}</div>
@@ -176,7 +180,12 @@ export default function StripeForm() {
           <fieldset>
             <label htmlFor="firstName">
               {/* <span>First Name</span> */}
-              <input name="firstName" type="text" placeholder="First Name" />
+              <input
+                name="firstName"
+                type="text"
+                placeholder="First Name"
+                onChange={e => setFirstName(e.target.value)}
+              />
               <p className="error">
                 {/* <ErrorMessage name="firstName" className="error" /> */}
               </p>

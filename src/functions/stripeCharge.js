@@ -2,7 +2,6 @@ exports.handler = async (event, context, callback) => {
   const stripe = require("stripe")("sk_test_YZbgPmIbm2d52T0CydfgleE700umJEzH0H")
 
   const calculateOrderAmount = async donationAmount => {
-
     return donationAmount
   }
 
@@ -11,7 +10,7 @@ exports.handler = async (event, context, callback) => {
   const paymentIntent = await stripe.paymentIntents.create({
     amount: await calculateOrderAmount(donationAmount),
     currency: "usd",
-    description: `Dear ${name}\n \n This is a receipt for your gracious donation to Artist Rescue Trust. Artist Rescue Trust is a fiscally sponsored program by The Digital Harbor Foundation - a 501c3 non-profit, EIN 45-2536579, that builds tools to help communities respond and be more resilient to crises. This donation is tax deductible in the USA. \n \n Thank you,  \n Artist Rescue Trust`,
+    description: `Dear ${name},\n \n This is a receipt for your gracious donation to Artist Rescue Trust. Artist Rescue Trust is a fiscally sponsored program by The Digital Harbor Foundation - a 501c3 non-profit, EIN 45-2536579, that builds tools to help communities respond and be more resilient to crises. This donation is tax deductible in the USA. \n \n Thank you,  \n Artist Rescue Trust`,
   })
 
   return {

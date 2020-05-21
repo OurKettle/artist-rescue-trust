@@ -146,6 +146,7 @@ ul li {
   .d-flex {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   .hidden {

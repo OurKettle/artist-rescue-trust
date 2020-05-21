@@ -2,7 +2,3 @@
   command = "npm run build"
   functions = "src/netlifyFunctions"
   publish = "public"
-
-[build.environment]
-GATSBY_STRIPE_PUBLISHABLE_KEY=pk_live_bKZnevS7JFUE4ix9WK447RZJ00SQsUwR6G
-GATSBY_STRIPE_SECRET_KEY=sk_live_Wn0AsoiqjBtD0H23cJ953fyE004W5D2iIm

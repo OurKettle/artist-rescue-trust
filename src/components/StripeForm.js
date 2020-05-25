@@ -21,22 +21,22 @@ export default function StripeForm() {
   const donationAmounts = [
     {
       label: "50",
-      value: "5000",
+      value: 5000,
       text: "Support those in need!",
     },
     {
       label: "100",
-      value: "10000",
+      value: 10000,
       text: "Move the needle for an artist",
     },
     {
       label: "500",
-      value: "50000",
+      value: 50000,
       text: "Support 1 month for 1 artist",
     },
     {
       label: "1500",
-      value: "150000",
+      value: 150000,
       text: "Support an artist for the full 3 months of support",
     },
     {
@@ -55,7 +55,7 @@ export default function StripeForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          donationAmount: donationAmount.value,
+          donationAmount: parseInt(donationAmount.value),
           name: firstName,
         }),
       })

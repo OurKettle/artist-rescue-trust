@@ -11,6 +11,7 @@ exports.handler = async (event, context, callback) => {
 
   const data = JSON.parse(event.body)
   const { donationAmount, name } = data
+
   const paymentIntent = await stripe.paymentIntents.create({
     amount: await calculateOrderAmount(donationAmount),
     currency: "usd",

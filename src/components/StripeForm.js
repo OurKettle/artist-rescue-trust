@@ -74,6 +74,10 @@ export default function StripeForm() {
     setError(ev.error ? ev.error.message : "")
   }
 
+  const handleProcessingFee = ev => {
+    return donationAmount
+  }
+
   const handleSubmit = async ev => {
     ev.preventDefault()
     setProcessing(true)
@@ -108,7 +112,7 @@ export default function StripeForm() {
       }}
       validationSchema={Yup.object({
         customAmount: Yup.string(),
-          // .min(0.5, ".50¢ minimum required")
+        // .min(0.5, ".50¢ minimum required")
         firstName: Yup.string().required("* required"),
         lastName: Yup.string().required("* required"),
         email: Yup.string()
@@ -196,12 +200,20 @@ export default function StripeForm() {
                 name="donationFee"
                 type="checkbox"
                 placeholder="Custom Amount"
+                onClick={handleProcessingFee}
               />
               <div className="d-flex">
                 <p>Optionally add $$$ to cover processing fee</p>
               </div>
             </label>
           </fieldset>
+
+          <div className="current-total">
+            <strong>Total Donation:</strong> $
+            {customAmount
+              ? "custom amount"
+              : donationAmount.value / 100 + ".00"}
+          </div>
         </section>
 
         <section className="billing">

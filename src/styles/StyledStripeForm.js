@@ -259,4 +259,11 @@ export const StyledStripeForm = styled.div`
     padding: 20px;
 
   }
+
+  .current-total {
+    ${Nimbus}
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
 `

@@ -7,7 +7,7 @@ import { loadStripe } from "@stripe/stripe-js"
 import StripeForm from "./StripeForm"
 import { StyledStripeForm } from "../styles/StyledStripeForm"
 
-const stripePromise = loadStripe("process.env.GATSBY_STRIPE_PUBLISHABLE_KEY")
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 
 const GiveHelp = () => {
   return (
@@ -36,13 +36,13 @@ const GiveHelp = () => {
             </div>
 
             <div className="bix c">
-              <p className="footer">
+              <div className="footer">
                 <div
                   dangerouslySetInnerHTML={{
                     __html: contentBlock1.footerNode.childMarkdownRemark.html,
                   }}
                 />
-              </p>
+              </div>
             </div>
           </StyledGrid>
         )

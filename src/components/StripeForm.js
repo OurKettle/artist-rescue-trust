@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js"
-// import { Formik, Field, Form, ErrorMessage } from "formik"
-// import * as Yup from "yup"
+import { Formik, Field, Form, ErrorMessage } from "formik"
+import * as Yup from "yup"
 
 export default function StripeForm() {
   const stripe = useStripe()
@@ -14,10 +14,11 @@ export default function StripeForm() {
   const [clientSecret, setClientSecret] = useState("")
   const [donationAmount, setDonationAmount] = useState({
     activeIndex: -1,
-    value: "",
+    value: 5000,
     checked: false,
   })
   const [firstName, setFirstName] = useState("")
+  const [customAmount, setCustomAmount] = useState("")
   const donationAmounts = [
     {
       label: "50",
@@ -40,7 +41,7 @@ export default function StripeForm() {
       text: "Support an artist for the full 3 months of support",
     },
     {
-      label: "custom",
+      label: "customAmount",
       value: "custom",
       text: "Enter custom amount",
     },
@@ -55,7 +56,8 @@ export default function StripeForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          donationAmount: parseInt(donationAmount.value),
+          donationAmount: {donationAmount.value,
+          donationIndex: donationAmount.activeIndex,
           name: firstName,
         }),
       })
@@ -97,8 +99,30 @@ export default function StripeForm() {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className={succeeded ? "hidden" : null}>
+    <Formik
+      initialValues={{
+        customAmount: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+      }}
+      validationSchema={Yup.object({
+        customAmount: Yup.string(),
+          // .min(0.5, ".50¢ minimum required")
+        firstName: Yup.string().required("* required"),
+        lastName: Yup.string().required("* required"),
+        email: Yup.string()
+          .email("Invalid email address")
+          .required("* required"),
+      })}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2))
+          setSubmitting(false)
+        }, 400)
+      }}
+    >
+      <Form onSubmit={handleSubmit} className={succeeded ? "hidden" : null}>
         <section className="amount">
           <h2>Choose Amount</h2>
           <fieldset className="amount-check">
@@ -110,6 +134,9 @@ export default function StripeForm() {
                   checked: true,
                 })
               }
+              console.log(donationAmount.value)
+              console.log(donationAmount.activeIndex)
+              // console.log(d.value)
 
               const renderSwitch = param => {
                 switch (param) {
@@ -123,14 +150,19 @@ export default function StripeForm() {
                   case "custom":
                     return (
                       <>
-                        <input
-                          name={d.label}
-                          type="text"
-                          placeholder="Custom Amount"
-                          onChange={handleOptionChange}
-                        />
+                        <div className="dollar">
+                          <i className="fas fa-dollar-sign icon"></i>
+                          <Field
+                            name={d.label}
+                            type="text"
+                            placeholder="10.00"
+                            onChange={e => setCustomAmount(e.target.value)}
+                            value={customAmount}
+                          />
+                        </div>
+                        <span className="hint">.50¢ minimum required</span>
                         <p className="error" style={{ margin: "0" }}>
-                          {/* <ErrorMessage name="customAmount" /> */}
+                          <ErrorMessage name="customAmount" />
                         </p>
                       </>
                     )
@@ -146,11 +178,11 @@ export default function StripeForm() {
                       : "checkbox"
                   }
                 >
-                  <input
+                  <Field
                     name={d.label}
                     value={d.value}
                     type="radio"
-                    checked={donationAmount.value === d.value}
+                    checked={donationAmount.value === String(d.value)}
                     onChange={handleOptionChange}
                   />
                   <div className="d-flex">{renderSwitch(d.value)}</div>
@@ -160,7 +192,7 @@ export default function StripeForm() {
           </fieldset>
           <fieldset>
             <label htmlFor="donationFee" className="checkbox">
-              <input
+              <Field
                 name="donationFee"
                 type="checkbox"
                 placeholder="Custom Amount"
@@ -177,30 +209,31 @@ export default function StripeForm() {
           <fieldset>
             <label htmlFor="firstName">
               {/* <span>First Name</span> */}
-              <input
+              <Field
                 name="firstName"
                 type="text"
                 placeholder="First Name"
                 onChange={e => setFirstName(e.target.value)}
+                value={firstName}
               />
               <p className="error">
-                {/* <ErrorMessage name="firstName" className="error" /> */}
+                <ErrorMessage name="firstName" className="error" />
               </p>
             </label>
             <label htmlFor="lastName">
               {/* <span>Last Name</span> */}
-              <input name="lastName" type="text" placeholder="Last Name" />
+              <Field name="lastName" type="text" placeholder="Last Name" />
               <p className="error">
-                {/* <ErrorMessage name="lastName" className="error" /> */}
+                <ErrorMessage name="lastName" className="error" />
               </p>
             </label>
           </fieldset>
           <fieldset>
             <label htmlFor="email">
               {/* <span>Email Address</span> */}
-              <input name="email" type="email" placeholder="Email Address" />
+              <Field name="email" type="email" placeholder="Email Address" />
               <p className="error">
-                {/* <ErrorMessage name="email" className="error" /> */}
+                <ErrorMessage name="email" className="error" />
               </p>
             </label>
           </fieldset>
@@ -217,19 +250,19 @@ export default function StripeForm() {
         >
           <span id="button-text">
             {processing ? (
-              <div class="sk-fading-circle">
-                <div class="sk-circle1 sk-circle"></div>
-                <div class="sk-circle2 sk-circle"></div>
-                <div class="sk-circle3 sk-circle"></div>
-                <div class="sk-circle4 sk-circle"></div>
-                <div class="sk-circle5 sk-circle"></div>
-                <div class="sk-circle6 sk-circle"></div>
-                <div class="sk-circle7 sk-circle"></div>
-                <div class="sk-circle8 sk-circle"></div>
-                <div class="sk-circle9 sk-circle"></div>
-                <div class="sk-circle10 sk-circle"></div>
-                <div class="sk-circle11 sk-circle"></div>
-                <div class="sk-circle12 sk-circle"></div>
+              <div className="sk-fading-circle">
+                <div className="sk-circle1 sk-circle"></div>
+                <div className="sk-circle2 sk-circle"></div>
+                <div className="sk-circle3 sk-circle"></div>
+                <div className="sk-circle4 sk-circle"></div>
+                <div className="sk-circle5 sk-circle"></div>
+                <div className="sk-circle6 sk-circle"></div>
+                <div className="sk-circle7 sk-circle"></div>
+                <div className="sk-circle8 sk-circle"></div>
+                <div className="sk-circle9 sk-circle"></div>
+                <div className="sk-circle10 sk-circle"></div>
+                <div className="sk-circle11 sk-circle"></div>
+                <div className="sk-circle12 sk-circle"></div>
               </div>
             ) : (
               <h2>Donate</h2>
@@ -242,17 +275,17 @@ export default function StripeForm() {
             {error}
           </div>
         )}
-      </form>
-      {/* Show a success message upon completion */}
-      <p className={succeeded ? "result-message" : "result-message hidden"}>
-        <span role="image" aria-label="thumbs up">
-          👍
-        </span>{" "}
-        Your donation was successful. Thank you!{" "}
-        <span role="image" aria-label="smiley face">
-          😀
-        </span>
-      </p>
-    </>
+        {/* Show a success message upon completion */}
+        <p className={succeeded ? "result-message" : "result-message hidden"}>
+          <span role="img" aria-label="thumbs-up-emoji">
+            👍
+          </span>{" "}
+          Your donation was successful. Thank you!{" "}
+          <span role="img" aria-label="smiley-face-emoji">
+            😀
+          </span>
+        </p>
+      </Form>
+    </Formik>
   )
 }

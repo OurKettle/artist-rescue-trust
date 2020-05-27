@@ -88,6 +88,27 @@ export const StyledStripeForm = styled.div`
         &.active {
           color: ${theme.black};
         }
+
+        .dollar {
+          display: flex;
+          align-items: center;
+          margin-left: -8px;
+
+          .icon {
+            position: relative;
+            left: 20px;
+          }
+
+          input[name=custom] {
+            padding-left: 25px;
+          }
+        }
+        .hint {
+          ${Nimbus}
+          font-size: 12px;
+          margin-top: 5px;
+          padding-left: 5px;
+        }
       }
 
       .d-flex {

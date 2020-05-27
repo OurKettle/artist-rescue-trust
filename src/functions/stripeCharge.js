@@ -3,14 +3,20 @@ require("dotenv").config({
 })
 
 exports.handler = async (event, context, callback) => {
-  const stripe = require("stripe")("process.env.GATSBY_STRIPE_SECRET_KEY")
-
-  const calculateOrderAmount = async donationAmount => {
-    return donationAmount
-  }
+  const stripe = require("stripe")(process.env.GATSBY_STRIPE_SECRET_KEY)
 
   const data = JSON.parse(event.body)
-  const { donationAmount, name } = data
+  const { donationAmount, donationIndex, name } = data
+
+  const calculateOrderAmount = async donationAmount => {
+    if (donationIndex === 4) {
+      // parseFloat(donationAmount) * 100
+      console.log('test')
+    }
+    return donationAmount
+  }
+  // console.log(donationAmount)
+
 
   const paymentIntent = await stripe.paymentIntents.create({
     amount: await calculateOrderAmount(donationAmount),

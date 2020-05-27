@@ -56,7 +56,7 @@ export default function StripeForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          donationAmount: {donationAmount.value,
+          donationAmount: donationAmount.value,
           donationIndex: donationAmount.activeIndex,
           name: firstName,
         }),

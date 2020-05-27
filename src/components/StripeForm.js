@@ -14,7 +14,7 @@ export default function StripeForm() {
   const [clientSecret, setClientSecret] = useState("")
   const [donationAmount, setDonationAmount] = useState({
     activeIndex: -1,
-    value: 5000,
+    value: 0,
     checked: false,
   })
   const [firstName, setFirstName] = useState("")

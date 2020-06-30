@@ -67,7 +67,7 @@ export const granteesQuery = graphql`
         }
       }
     }
-    grantees: allDatoCmsGrantee {
+    grantees: allDatoCmsGrantee(sort: {order: ASC, fields: name}) {
       nodes {
         id
         slug

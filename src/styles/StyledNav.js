@@ -81,7 +81,8 @@ export const StyledNav = styled.nav`
   }
 
   .menu-item {
-    margin-right: 15px;
+    margin-right: 12px;
+
     @media ${device.desktop} {
       margin-right: 30px;
     }
@@ -252,7 +253,7 @@ export const StyledSocialNav = styled.nav`
     color: ${theme.white};
     padding: 20px 0;
     transition: color .25s ease-out;
-      
+
       &.instagram:hover {
         color: ${theme.instagram};
       }

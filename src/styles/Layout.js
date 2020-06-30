@@ -33,7 +33,7 @@ export const Header = styled.header`
     }
 
     @media ${device.laptop} {
-      width: 325px;
+      width: 305px;
     }
 
     @media ${device.desktop} {

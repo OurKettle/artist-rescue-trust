@@ -21,11 +21,7 @@ export const Nav = ({ location }) => {
       <Link to="/" id="home" className="menu-item" activeClassName="active">
         Home
       </Link>
-      <a
-        href="/#aboutSection"
-        id="about"
-        className="menu-item"
-      >
+      <a href="/#aboutSection" id="about" className="menu-item">
         About
       </a>
       <Link
@@ -43,6 +39,15 @@ export const Nav = ({ location }) => {
         activeClassName="active"
       >
         Our Team
+      </Link>
+      <Link
+        to="/our-grantees"
+        id="our-grantees"
+        className="menu-item"
+        activeClassName="active"
+        partiallyActive="true"
+      >
+        Our Grantees
       </Link>
       <Link
         to="/give-help"
@@ -84,11 +89,7 @@ export const MobileNav = ({ location }) => {
         <Link to="/" id="home" className="menu-item" activeClassName="active">
           Home
         </Link>
-        <a
-          href="/#aboutSection"
-          id="about"
-          className="menu-item"
-        >
+        <a href="/#aboutSection" id="about" className="menu-item">
           About
         </a>
         <Link
@@ -106,6 +107,14 @@ export const MobileNav = ({ location }) => {
           activeClassName="active"
         >
           Our Team
+        </Link>
+        <Link
+          to="/our-grantees"
+          id="our-grantees"
+          className="menu-item"
+          activeClassName="active"
+        >
+          Our Grantees
         </Link>
         <Link
           to="/give-help"

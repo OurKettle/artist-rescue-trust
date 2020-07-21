@@ -10,15 +10,16 @@ import { StyledGrid } from "../styles/StyledGrid"
 const GetHelp = () => {
   useEffect(() => {
     const script = document.createElement("script")
-    script.src = "https://services.cognitoforms.com/s/bbN8iw1MJUqjPe6aHn-_rw"
+    script.src = "https://services.cognitoforms.com/s/bPQKposy-EGiy0CvXlzAgg"
     document.body.appendChild(script)
     script.addEventListener("load", () => {
-      window.Cognito.load("forms", { id: "71" })
+      window.Cognito.load("forms", { id: "1" })
     })
   }, [])
 
   return (
     <StaticQuery
+
       query={getHelpQuery}
       render={data => {
         const contentBlock1 = data.getHelp.contentBlocks[0]

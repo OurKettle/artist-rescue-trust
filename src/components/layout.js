@@ -27,6 +27,7 @@ const Layout = ({ location, children }) => {
                   src="https://kit.fontawesome.com/856c74694a.js"
                   crossorigin="anonymous"
                 ></script>
+                <meta name="monetization" content="$ilp.uphold.com/JWP2Um9RFi9a"></meta>
               </HelmetDatoCms>
               <MobileNav location={location.pathname} />
               <div className="app">

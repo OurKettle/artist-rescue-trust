@@ -71,11 +71,11 @@ export const getHelpQuery = graphql`
           }
         }
       }
-      cognitoFormEmbedNode {
-        childMarkdownRemark {
-          html
-        }
-      }
+      # cognitoFormEmbedNode {
+      #   childMarkdownRemark {
+      #     html
+      #   }
+      # }
     }
   }
 `

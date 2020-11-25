@@ -15,7 +15,7 @@ const GiveHelp = () => {
         const contentBlock1 = data.giveHelp.contentBlocks[0]
 
         return (
-          <StyledGrid className="main-content">
+          <StyledGrid className="main-content give-help">
             <div className="box a">
               <h1 className="heading">{contentBlock1.heading}</h1>
               <div

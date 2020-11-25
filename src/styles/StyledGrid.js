@@ -16,4 +16,10 @@ export const StyledGrid = styled.div`
   hr {
     border-style: solid;
   }
+
+  &.main-content.give-help {
+    p img {
+      width: 100%;
+    }
+  }
 `

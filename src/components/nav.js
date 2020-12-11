@@ -24,6 +24,14 @@ export const Nav = ({ location }) => {
       <a href="/#aboutSection" id="about" className="menu-item">
         About
       </a>
+      <a
+        href="https://community.webmonetization.org/artistrescuetrust"
+        target="_blank"
+        id="blog"
+        className="menu-item"
+      >
+        Blog
+      </a>
       <Link
         to="/how-it-works"
         id="how-it-works"
@@ -91,6 +99,14 @@ export const MobileNav = ({ location }) => {
         </Link>
         <a href="/#aboutSection" id="about" className="menu-item">
           About
+        </a>
+        <a
+          href="https://community.webmonetization.org/artistrescuetrust"
+          target="_blank"
+          id="blog"
+          className="menu-item"
+        >
+          Blog
         </a>
         <Link
           to="/how-it-works"

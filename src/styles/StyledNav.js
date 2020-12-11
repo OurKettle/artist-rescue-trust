@@ -28,11 +28,11 @@ export const StyledNav = styled.nav`
     transition: color 0.3s ease-out;
 
     @media ${device.laptop} {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
     @media ${device.desktop} {
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
 
     &:hover,
